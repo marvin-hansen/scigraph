@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+filegroup(
+    name = "build",
+    srcs = [
+        ":crypto_utils",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "crypto_utils",
+    srcs = [
+        "crypto_utils.go",
+        "hash.go",
+        "uuid.go",
+    ],
+    importpath = "scigraph/src/utils/crypto_utils",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_zeebo_xxh3//:xxh3"],
+)

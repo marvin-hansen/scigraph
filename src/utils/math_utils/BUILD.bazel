@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+filegroup(
+    name = "build",
+    srcs = [
+        ":math_utils",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "math_utils",
+    srcs = ["utils_min_max.go"],
+    importpath = "scigraph/src/utils/math_utils",
+    visibility = ["//visibility:public"],
+)

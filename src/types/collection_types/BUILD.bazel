@@ -1,0 +1,30 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+filegroup(
+    name = "build",
+    srcs = [
+        ":collection_types",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "collection_types",
+    srcs = [
+        "error.go",
+        "order_kv_holder.go",
+        "order_map.go",
+        "order_map_sync.go",
+        "ring.go",
+        "rolling_window.go",
+    ],
+    importpath = "scigraph/src/types/collection_types",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "collection_types_test",
+    srcs = ["rolling_window_test.go"],
+    embed = [":collection_types"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

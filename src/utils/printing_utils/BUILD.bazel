@@ -1,0 +1,20 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+filegroup(
+    name = "build",
+    srcs = [
+        ":printing_utils",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "printing_utils",
+    srcs = [
+        "init_print_utils.go",
+        "service_headers.go",
+    ],
+    importpath = "scigraph/src/utils/printing_utils",
+    visibility = ["//visibility:public"],
+    deps = ["//src/utils/dbg_utils"],
+)

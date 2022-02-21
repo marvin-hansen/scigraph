@@ -1,0 +1,40 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+filegroup(
+    name = "build",
+    srcs = [
+        ":graph_types",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "graph_types",
+    srcs = [
+        "dag.go",
+        "dot.go",
+        "graph.go",
+        "interfaces.go",
+        "marshal.go",
+        "set.go",
+        "tarjan.go",
+        "test_types.go",
+    ],
+    importpath = "scigraph/src/types/graph_types",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_hashicorp_go_multierror//:go-multierror"],
+)
+
+go_test(
+    name = "graph_types_test",
+    srcs = [
+        "dag_test.go",
+        "dot_test.go",
+        "edge_test.go",
+        "graph_test.go",
+        "marshal_test.go",
+        "set_test.go",
+        "tarjan_test.go",
+    ],
+    embed = [":graph_types"],
+)

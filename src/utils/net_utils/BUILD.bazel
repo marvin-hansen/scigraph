@@ -1,0 +1,7 @@
+filegroup(
+    name = "build",
+    srcs = [
+        "//src/utils/net_utils/http_handler:build",
+    ],
+    visibility = ["//visibility:public"],
+)

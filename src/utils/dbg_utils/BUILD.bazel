@@ -1,0 +1,25 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+filegroup(
+    name = "build",
+    srcs = [
+        ":dbg_utils",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "dbg_utils",
+    srcs = [
+        "dbg.go",
+        "dbg_error.go",
+        "dbg_log.go",
+        "dbg_requests.go",
+        "dbg_response.go",
+        "dbg_structs.go",
+        "dbg_utils.go",
+    ],
+    importpath = "scigraph/src/utils/dbg_utils",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_go_numb_go_ftx//rest/private/orders"],
+)

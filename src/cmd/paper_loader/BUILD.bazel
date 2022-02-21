@@ -1,0 +1,20 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "paper_loader_lib",
+    srcs = ["main.go"],
+    importpath = "scigraph/src/cmd/paper_loader",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "paper_loader",
+    embed = [":paper_loader_lib"],
+    gc_linkopts = [
+        "-w",  # disable DWARF generation
+        "-s",  # disable symbol table
+    ],
+    pure = "on",  # No C crap; just pure go
+    static = "on",  # compile static binary
+    visibility = ["//visibility:public"],
+)

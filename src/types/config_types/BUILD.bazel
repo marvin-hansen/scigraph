@@ -1,0 +1,38 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+filegroup(
+    name = "build",
+    srcs = [
+        ":config_types",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "config_types",
+    srcs = [
+        "channel_config.go",
+        "crypto_config.go",
+        "db_config.go",
+        "dns_config.go",
+        "enum_channels.go",
+        "enum_data_channels.go",
+        "enum_env.go",
+        "enum_exchange.go",
+        "enum_service_name.go",
+        "enum_timeframes.go",
+        "imx_config.go",
+        "integration_model.go",
+        "main_config.go",
+        "nats_config.go",
+        "service_config.go",
+        "service_model.go",
+        "smx_config.go",
+    ],
+    importpath = "scigraph/src/types/config_types",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//src/clients/pgdb_client",
+        "//src/utils/crypto_utils",
+    ],
+)

@@ -1,0 +1,7 @@
+filegroup(
+    name = "build",
+    srcs = [
+        "//src/config/dbg_config:build",
+    ],
+    visibility = ["//visibility:public"],
+)

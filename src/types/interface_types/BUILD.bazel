@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+filegroup(
+    name = "build",
+    srcs = [
+        ":interface_types",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "interface_types",
+    srcs = [
+        "init_function.go",
+        "service.go",
+    ],
+    importpath = "scigraph/src/types/interface_types",
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,7 @@
+filegroup(
+    name = "build",
+    srcs = [
+        "//src/clients/pgdb_client:build",
+    ],
+    visibility = ["//visibility:public"],
+)

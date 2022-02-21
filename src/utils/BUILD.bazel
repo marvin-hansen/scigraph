@@ -1,0 +1,11 @@
+filegroup(
+    name = "build",
+    srcs = [
+        "//src/utils/crypto_utils:build",
+        "//src/utils/dbg_utils:build",
+        "//src/utils/math_utils:build",
+        "//src/utils/net_utils:build",
+        "//src/utils/printing_utils:build",
+    ],
+    visibility = ["//visibility:public"],
+)

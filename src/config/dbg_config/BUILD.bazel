@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+filegroup(
+    name = "build",
+    srcs = [
+        ":dbg_config",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "dbg_config",
+    srcs = ["dbg_clients.go"],
+    importpath = "scigraph/src/config/dbg_config",
+    visibility = ["//visibility:public"],
+)

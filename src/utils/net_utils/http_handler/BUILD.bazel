@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "http_handler",
+    srcs = ["handler.go"],
+    importpath = "scigraph/src/utils/net_utils/http_handler",
+    visibility = ["//visibility:public"],
+)
+
+filegroup(
+    name = "build",
+    srcs = [
+        ":http_handler",
+    ],
+    visibility = ["//visibility:public"],
+)
