@@ -5,6 +5,7 @@ go_library(
     srcs = ["main.go"],
     importpath = "scigraph/src/cmd/paper_loader",
     visibility = ["//visibility:private"],
+    deps = ["//src/cmd/paper_loader/app"],
 )
 
 go_binary(

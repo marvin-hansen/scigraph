@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "app",
+    srcs = [
+        "aNew.go",
+        "init.go",
+        "state.go",
+        "utils_process.go",
+        "utils_query.go",
+        "utils_search.go",
+        "workflow.go",
+    ],
+    importpath = "scigraph/src/cmd/paper_loader/app",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//src/utils/dbg_utils",
+        "@com_github_marvin_hansen_arxiv//v1:arxiv",
+    ],
+)
+
+go_test(
+    name = "app_test",
+    srcs = ["workflow_test.go"],
+    embed = [":app"],
+    deps = ["@com_github_marvin_hansen_arxiv//v1:arxiv"],
+)
