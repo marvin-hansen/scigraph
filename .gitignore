@@ -1,15 +1,41 @@
-# Binaries for programs and plugins
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
+.idea
+.idea/*
 
-# Test binary, built with `go test -c`
-*.test
+.classpath
+.settings/
+.groovy/
+.ijwb/
 
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
+notes/*
+notes/*.txt
+notes/api-key.txt
 
-# Dependency directories (remove the comment below to include it)
-# vendor/
+# Bazel stuff
+bazel-out
+bazel-out/*.*
+dist
+dist/*.*
+
+# Emacs save files
+*~
+\#*\#
+.\#*
+
+# Vim-related files
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+
+# Crash & log files
+crash.log
+output.log
+
+# Generate proto bindings
+# Docker needs them to build an image ... Really, better build with Bazel
+# /proto/cmdb/*.pb.go
+# /proto/cmx/*.pb.go
+# /proto/imx/*.pb.go
+# /proto/smdb/*.pb.go
+# /proto/*/*.pb.go
