@@ -325,8 +325,8 @@ go_repository(
 go_repository(
     name = "com_github_marvin_hansen_arxiv",
     importpath = "github.com/marvin-hansen/arxiv",
-    sum = "h1:hNTrce87hSnaj9G8XYqFKB6m9+ttWSZCD+Iju8r4mfM=",
-    version = "v0.1.1",
+    sum = "h1:iszWHAPIYl/WaOi2AvZqZLSIuFhNadzWgstiTEWKxM8=",
+    version = "v0.1.2",
 )
 
 go_repository(
@@ -563,8 +563,8 @@ go_repository(
 go_repository(
     name = "org_golang_x_exp",
     importpath = "golang.org/x/exp",
-    sum = "h1:c2HOrn5iMezYjSlGPncknSEr/8x5LELb/ilJbXi9DEA=",
-    version = "v0.0.0-20190121172915-509febef88a4",
+    sum = "h1:y102fOLFqhV41b+4GPiJoa0k/x+pJcEi2/HB1Y5T6fU=",
+    version = "v0.0.0-20190125153040-c74c464bbbf2",
 )
 
 go_repository(
@@ -628,6 +628,153 @@ go_repository(
     importpath = "golang.org/x/xerrors",
     sum = "h1:E7g+9GITq07hpfrRu66IVDexMakfv52eLZ2CXBWiKr4=",
     version = "v0.0.0-20191204190536-9bdfabe68543",
+)
+
+go_repository(
+    name = "com_github_ajstarks_svgo",
+    importpath = "github.com/ajstarks/svgo",
+    sum = "h1:wVe6/Ea46ZMeNkQjjBW6xcqyQA/j5e0D6GytH95g0gQ=",
+    version = "v0.0.0-20180226025133-644b8db467af",
+)
+
+go_repository(
+    name = "com_github_cpuguy83_go_md2man_v2",
+    importpath = "github.com/cpuguy83/go-md2man/v2",
+    sum = "h1:U+s90UTSYgptZMwQh2aRr3LuazLJIa+Pg3Kc1ylSYVY=",
+    version = "v2.0.0-20190314233015-f79a8a8ca69d",
+)
+
+go_repository(
+    name = "com_github_deckarep_golang_set",
+    importpath = "github.com/deckarep/golang-set",
+    sum = "h1:SCQV0S6gTtp6itiFrTqI+pfmJ4LN85S1YzhDf9rTHJQ=",
+    version = "v1.7.1",
+)
+
+go_repository(
+    name = "com_github_fogleman_gg",
+    importpath = "github.com/fogleman/gg",
+    sum = "h1:WXb3TSNmHp2vHoCroCIB1foO/yQ36swABL8aOVeDpgg=",
+    version = "v1.2.1-0.20190220221249-0403632d5b90",
+)
+
+go_repository(
+    name = "com_github_golang_freetype",
+    importpath = "github.com/golang/freetype",
+    sum = "h1:DACJavvAHhabrF08vX0COfcOBJRhZ8lUbR+ZWIs0Y5g=",
+    version = "v0.0.0-20170609003504-e2365dfdc4a0",
+)
+
+go_repository(
+    name = "com_github_jdkato_prose",
+    importpath = "github.com/jdkato/prose",
+    sum = "h1:r6CwY09U97IZNgNQEHoeCh2nvg2e8WCOGjPH/b7lowI=",
+    version = "v1.1.1",
+)
+
+go_repository(
+    name = "com_github_jdkato_prose_v2",
+    importpath = "github.com/jdkato/prose/v2",
+    sum = "h1:XRwsTM2AJPilvW5T4t/H6Lv702Qy49efHaWfn3YjWbI=",
+    version = "v2.0.0",
+)
+
+go_repository(
+    name = "com_github_jung_kurt_gofpdf",
+    importpath = "github.com/jung-kurt/gofpdf",
+    sum = "h1:PJr+ZMXIecYc1Ey2zucXdR73SMBtgjPgwa31099IMv0=",
+    version = "v1.0.3-0.20190309125859-24315acbbda5",
+)
+
+go_repository(
+    name = "com_github_mingrammer_commonregex",
+    importpath = "github.com/mingrammer/commonregex",
+    sum = "h1:QY0Z1Bl80jw9M3+488HJXPWnZmvtu3UdvxyodP2FTyY=",
+    version = "v1.0.1",
+)
+
+go_repository(
+    name = "com_github_montanaflynn_stats",
+    importpath = "github.com/montanaflynn/stats",
+    sum = "h1:F8446DrvIF5V5smZfZ8K9nrmmix0AFgevPdLruGOmzk=",
+    version = "v0.6.3",
+)
+
+go_repository(
+    name = "com_github_neurosnap_sentences",
+    importpath = "github.com/neurosnap/sentences",
+    sum = "h1:iBVUivNtlwGkYsJblWV8GGVFmXzZzak907Ci8aA0VTE=",
+    version = "v1.0.6",
+)
+
+go_repository(
+    name = "com_github_russross_blackfriday_v2",
+    importpath = "github.com/russross/blackfriday/v2",
+    sum = "h1:lPqVAte+HuHNfhJ/0LC98ESWRz8afy9tM/0RK8m9o+Q=",
+    version = "v2.0.1",
+)
+
+go_repository(
+    name = "com_github_shogo82148_go_shuffle",
+    importpath = "github.com/shogo82148/go-shuffle",
+    sum = "h1:rUbV6LJa5RXK3jT/4jnJUz3UkrXzW6cqB+n9Fkbv9jY=",
+    version = "v0.0.0-20180218125048-27e6095f230d",
+)
+
+go_repository(
+    name = "com_github_shurcool_sanitized_anchor_name",
+    importpath = "github.com/shurcooL/sanitized_anchor_name",
+    sum = "h1:PdmoCO6wvbs+7yrJyMORt4/BmY5IYyJwS/kOiWx8mHo=",
+    version = "v1.0.0",
+)
+
+go_repository(
+    name = "com_github_urfave_cli",
+    importpath = "github.com/urfave/cli",
+    sum = "h1:u7tSpNPPswAFymm8IehJhy4uJMlUuU/GmqSkvJ1InXA=",
+    version = "v1.22.4",
+)
+
+go_repository(
+    name = "in_gopkg_neurosnap_sentences_v1",
+    importpath = "gopkg.in/neurosnap/sentences.v1",
+    sum = "h1:v7ElyP020iEZQONyLld3fHILHWOPs+ntzuQTNPkul8E=",
+    version = "v1.0.6",
+)
+
+go_repository(
+    name = "io_rsc_pdf",
+    importpath = "rsc.io/pdf",
+    sum = "h1:k1MczvYDUvJBe93bYd7wrZLLUEcLZAuF824/I4e5Xr4=",
+    version = "v0.1.1",
+)
+
+go_repository(
+    name = "org_golang_x_image",
+    importpath = "golang.org/x/image",
+    sum = "h1:00VmoueYNlNz/aHIilyyQz/MHSqGoWJzpFv/HW8xpzI=",
+    version = "v0.0.0-20180708004352-c73c2afc3b81",
+)
+
+go_repository(
+    name = "org_gonum_v1_gonum",
+    importpath = "gonum.org/v1/gonum",
+    sum = "h1:Hdks0L0hgznZLG9nzXb8vZ0rRvqNvAcgAp84y7Mwkgw=",
+    version = "v0.7.0",
+)
+
+go_repository(
+    name = "org_gonum_v1_netlib",
+    importpath = "gonum.org/v1/netlib",
+    sum = "h1:OE9mWmgKkjJyEmDAAtGMPjXu+YNeGvK9VTSHY6+Qihc=",
+    version = "v0.0.0-20190313105609-8cb42192e0e0",
+)
+
+go_repository(
+    name = "org_gonum_v1_plot",
+    importpath = "gonum.org/v1/plot",
+    sum = "h1:Qh4dB5D/WpoUUp3lSod7qgoyEHbDGPUWjIbnqdqqe1k=",
+    version = "v0.0.0-20190515093506-e2840ee46a6b",
 )
 
 rules_proto_dependencies()

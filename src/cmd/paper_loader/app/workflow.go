@@ -7,7 +7,7 @@ import (
 
 func (a *App) FetchAllPapersBySearchTerm(terms string) {
 	q := getQueryBySearchTerms(terms)
-	ph := a.processPrintEntryHandler
+	ph := a.state.handler
 
 	searchAndProcess(q, ph)
 }
@@ -17,42 +17,42 @@ func (a *App) FetchPaperByArticleIDs(articleIDs string) {
 	// thus the conversion here. see https://github.com/orijtech/arxiv/pulls
 	s := strings.Split(articleIDs, ",")
 	q := getQueryByArticleIDs(s)
-	ph := a.processPrintEntryHandler
+	ph := a.state.handler
 
 	searchAndProcess(q, ph)
 }
 
 func (a *App) FetchPaperByTitleAndCategory(titleKeywords string, category arxiv.Category) {
 	q := getQueryByTitleAndCategory(titleKeywords, category)
-	ph := a.processPrintEntryHandler
+	ph := a.state.handler
 
 	searchAndProcess(q, ph)
 }
 
 func (a *App) FetchPaperByTitleAndAuthor(authors, titleKeywords string) {
 	q := getQueryByAuthorAndTitle(authors, titleKeywords)
-	ph := a.processPrintEntryHandler
+	ph := a.state.handler
 
 	searchAndProcess(q, ph)
 }
 
 func (a *App) FetchAllPaperByAuthor(authors string) {
 	q := getQueryAllByAuthor(authors)
-	ph := a.processPrintEntryHandler
+	ph := a.state.handler
 
 	searchAndProcess(q, ph)
 }
 
 func (a *App) FetchAllPaperByTitle(tile string) {
 	q := getQueryAllByTitle(tile)
-	ph := a.processPrintEntryHandler
+	ph := a.state.handler
 
 	searchAndProcess(q, ph)
 }
 
 func (a *App) FetchAllPaperByKeywords(keywords string) {
 	q := getQueryAllByTitleAndAbstractKeywords(keywords)
-	ph := a.processPrintEntryHandler
+	ph := a.state.handler
 
 	searchAndProcess(q, ph)
 }

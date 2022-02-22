@@ -4,9 +4,11 @@ go_library(
     name = "app",
     srcs = [
         "aNew.go",
+        "flags.go",
         "init.go",
+        "process_nlp.go",
+        "process_print.go",
         "state.go",
-        "utils_process.go",
         "utils_query.go",
         "utils_search.go",
         "workflow.go",
@@ -15,6 +17,7 @@ go_library(
     visibility = ["//visibility:public"],
     deps = [
         "//src/utils/dbg_utils",
+        "@com_github_jdkato_prose_v2//:prose",
         "@com_github_marvin_hansen_arxiv//v1:arxiv",
     ],
 )

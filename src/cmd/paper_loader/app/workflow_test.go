@@ -19,8 +19,8 @@ func TestFetchAllPapersByArticleIDs(t *testing.T) {
 
 func TestFetchPaperByTitleAndCategory(t *testing.T) {
 	a := NewApp()
-	title := "Generative Causal Explanations for Graph Neural Networks"
-	category := arxiv.CSLearning
+	title := "Graph Neural Networks"
+	category := arxiv.MachineLearning
 	a.FetchPaperByTitleAndCategory(title, category)
 }
 

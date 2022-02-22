@@ -25,7 +25,7 @@ func getQueryByTitleAndCategory(titleKeywords string, category arxiv.Category) *
 	return &arxiv.Query{
 		Filters: []*arxiv.Filter{
 			{
-				Op: arxiv.OpAnd,
+				Op: arxiv.OpOR,
 				Fields: []*arxiv.Field{
 					{Title: titleKeywords},
 					{Category: category},
