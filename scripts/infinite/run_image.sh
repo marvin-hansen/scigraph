@@ -5,4 +5,5 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-command docker build --platform linux/x86_64 -t infity:latest .
+# -td
+docker run --platform linux/x86_64 --name infinity --net my-net -p 8190:8190 infity:latest
