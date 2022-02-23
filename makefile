@@ -11,23 +11,25 @@ CC=clang # required by bazel
 help:
 	@echo ' '
 	@echo 'Setup: '
-	@echo '    make check        	    	Checks whether all project requirements are present.'
-	@echo '    make db-deploy        	Deploys & starts the DB container. Run just once to create. Then use docker container start/stop timescaledb.'
+	@echo '    make check        	    	  Checks whether all project requirements are present.'
+	@echo '    make db-deploy        	  Deploys & starts the DB container. Run just once to create'
+	@echo '    make graph-build-image    	  Builds a docker image containing infinite graph.'
+	@echo '    make graph-create-container   Creates an infinite graph cocker container that can be started & stopped.'
+	@echo '    make graph-delete-container   Deletes the infinite graph cocker container that can be started & stopped.'
 	@echo ' '
+	@echo 'GRAPH: '
+	@echo '    make graph-start   		Starts the local infinite graph.'
+	@echo '    make graph-stop   		Stops  the local infinite graph.'
+
 	@echo 'DB: '
 	@echo '    make db-configure   	Configures the initial DB.Run again to reset & delete all data!'
-	@echo '    make db-start   		starts the local timescale database (tsdb).'
-	@echo '    make db-stop   		stops  the local timescale database (tsdb).'
+	@echo '    make db-start   		Starts the local timescale database (tsdb).'
+	@echo '    make db-stop   		Stops  the local timescale database (tsdb).'
 	@echo ' '
 	@echo 'Dev: '
 	@echo '    make build   		Builds the code base incrementally (fast). Use for coding.'
 	@echo '    make rebuild   		Rebuilds all dependencies & the code base (slow). Use after go mod changes. '
 	@echo '    make stats   		Crunches & shows the latest project stats. '
-
-#	@echo ' '
-#	@echo 'Docker: '
-#	@echo '    make build-smdb   		builds the docker image for service management & database service (SMDB).'
-
 
 # "---------------------------------------------------------"
 # Setup
@@ -46,6 +48,29 @@ gen-keys:
 	@source scripts/run/run_gen_keys.sh
 
 # "---------------------------------------------------------"
+# INFINITE GRAPH
+# "---------------------------------------------------------"
+.PHONY: graph-build-image
+graph-build-image:
+	@source scripts/infinite/docker_build.sh
+
+.PHONY: graph-create-container
+graph-create-container:
+	@source scripts/infinite/docker_container_run.sh
+
+.PHONY: graph-delete-container
+graph-delete-container:
+	@source scripts/infinite/docker_container_remove.sh
+
+.PHONY: graph-start
+graph-start:
+	@source scripts/infinite/docker_start.sh
+
+.PHONY: graph-stop
+graph-stop:
+	@source scripts/infinite/docker_stop.sh
+
+# "---------------------------------------------------------"
 # DB
 # "---------------------------------------------------------"
 .PHONY: db-configure
@@ -59,7 +84,6 @@ db-start:
 .PHONY: db-stop
 db-stop:
 	@source scripts/db/local/stop_db.sh
-
 
 # "---------------------------------------------------------"
 # Development

@@ -12,10 +12,10 @@ RUN wget https://infinitegraph.com/wp-content/uploads/2021/08/zip-linux-gcc53-am
 RUN unzip -qd /app zip-linux-gcc53-amd64-202130.zip
 RUN rm *.zip
 
-COPY scripts/infinite/run.sh run.sh
+COPY scripts/infinite/entrypoint.sh entrypoint.sh
 COPY scripts/infinite/restart.sh restart.sh
 RUN chmod +x *.sh
 
 EXPOSE 8190 8185
 
-ENTRYPOINT ["./run.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
