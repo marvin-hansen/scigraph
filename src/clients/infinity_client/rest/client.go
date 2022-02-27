@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-const ENDPOINT = "https://ftx.com/api"
+const DefaultEndpoint = "http://localhost:8185/"
 
 type Client struct {
 	Endpoint    string
@@ -13,12 +13,10 @@ type Client struct {
 	HTTPTimeout time.Duration
 }
 
-func New() *Client {
-	hc := new(fasthttp.Client)
-
+func NewClient(config *ClientConfig) *Client {
 	return &Client{
-		Endpoint:    ENDPOINT,
-		HTTPC:       hc,
+		Endpoint:    getEndpoint(config),
+		HTTPC:       new(fasthttp.Client),
 		HTTPTimeout: 5 * time.Second,
 	}
 }
