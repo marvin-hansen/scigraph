@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_test")
+
+go_test(
+    name = "rest_test_test",
+    srcs = [
+        "client_test.go",
+        "uptime_test.go",
+    ],
+    deps = [
+        "//src/clients/infinity_client/rest",
+        "@com_github_stretchr_testify//assert",
+    ],
+)

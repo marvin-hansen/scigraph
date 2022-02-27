@@ -1,8 +1,7 @@
 filegroup(
     name = "build",
     srcs = [
-        "//src/clients/infinity_client:build",
-        "//src/clients/pgdb_client:build",
+        "//src/clients/infinity_client/rest",
     ],
     visibility = ["//visibility:public"],
 )

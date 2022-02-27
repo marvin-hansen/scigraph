@@ -777,6 +777,20 @@ go_repository(
     version = "v0.0.0-20190515093506-e2840ee46a6b",
 )
 
+go_repository(
+    name = "com_github_facebook_fbthrift",
+    importpath = "github.com/facebook/fbthrift",
+    sum = "h1:ZA+qQ3d2In0RNzVpk+D/nq1sjDSv+s1Wy2zrAPQAmsg=",
+    version = "v0.31.1-0.20211129061412-801ed7f9f295",
+)
+
+go_repository(
+    name = "com_github_vesoft_inc_nebula_go_v3",
+    importpath = "github.com/vesoft-inc/nebula-go/v3",
+    sum = "h1:ii5T3vps4xAQZkzPvGn6NuiUWlH/rm1zdIS5VTEA71A=",
+    version = "v3.0.0",
+)
+
 rules_proto_dependencies()
 
 rules_proto_toolchains()

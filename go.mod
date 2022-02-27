@@ -9,11 +9,13 @@ require (
 	github.com/jdkato/prose/v2 v2.0.0
 	github.com/marvin-hansen/arxiv v0.1.2
 	github.com/stretchr/testify v1.7.0
+	github.com/valyala/fasthttp v1.21.0
 	github.com/vesoft-inc/nebula-go/v3 v3.0.0
 	github.com/zeebo/xxh3 v1.0.1
 )
 
 require (
+	github.com/andybalholm/brotli v1.0.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/deckarep/golang-set v1.7.1 // indirect
 	github.com/facebook/fbthrift v0.31.1-0.20211129061412-801ed7f9f295 // indirect
@@ -23,6 +25,7 @@ require (
 	github.com/hashicorp/errwrap v1.0.0 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.10 // indirect
+	github.com/klauspost/compress v1.10.7 // indirect
 	github.com/klauspost/cpuid/v2 v2.0.9 // indirect
 	github.com/mingrammer/commonregex v1.0.1 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421 // indirect
@@ -30,6 +33,7 @@ require (
 	github.com/orijtech/otils v0.0.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc // indirect
+	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/vmihailenco/bufpool v0.1.11 // indirect
 	github.com/vmihailenco/msgpack/v5 v5.3.4 // indirect
 	github.com/vmihailenco/tagparser v0.1.2 // indirect
