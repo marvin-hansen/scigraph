@@ -4,12 +4,12 @@
 echo "Run script:"
 
 echo " * Start Lock Server"
-command ./bin/objy startlockserver  # >/dev/null
+command objy startlockserver  # >/dev/null
 
 command sleep 1  # Waits 1 second so that lockserver is online.
 
 echo " * Start Studio Server"
-command ./bin/objy startstudioserver
+command objy startstudioserver
 
 command sleep 1  # Wait a bit to let studio server start
 
@@ -17,7 +17,10 @@ command sleep 1  # Wait a bit to let studio server start
 # You can start the Objectivity REST server by providing a single argument, which is the path to the bootfile of a federated database.
 
 # echo " * Start API Server"
-# command ./bin/objy StartRESTServer -fdAlias rental -configFile restApiConfig.xml
+# command objy StartRESTServer -fdAlias kb -configFile restApiConfig.xml
+
+# Check if API service is running.
+# objy CheckRESTServer
 
 # This kees the container running after the script completed,
 # but will exit immediately on Ctr-C or a docker stop signal
