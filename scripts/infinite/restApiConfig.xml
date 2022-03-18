@@ -1,9 +1,0 @@
-<Objectivity>
-    <FederatedDatabases>
-        <!-- Provide a shortcut name and boot file path for each FD relative to the folder where the server started!-->
-        <FederatedDatabase fdAlias="kb"  bootFile="data/kb.boot" />
-    </FederatedDatabases>
-    <PortNumber value="8185" />   <!-- If omitted, default value is 8185 -->
-    <MinThreads value="1" />     <!-- If omitted, default value is 10 -->
-    <MaxThreads value="2" />     <!-- If omitted, default value is 30 -->
-</Objectivity>
