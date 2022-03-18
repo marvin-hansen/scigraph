@@ -1,6 +1,9 @@
 package kb_types
 
-import "github.com/marvin-hansen/arxiv/v1"
+import (
+	"github.com/marvin-hansen/arxiv/v1"
+	"scigraph/src/utils/crypto_utils"
+)
 
 func newPublicationArray(entries []*arxiv.Entry) (publicationArray []*Publication) {
 	for _, e := range entries {
@@ -12,12 +15,13 @@ func newPublicationArray(entries []*arxiv.Entry) (publicationArray []*Publicatio
 
 func newPublication(entry *arxiv.Entry) *Publication {
 	return &Publication{
+		GUID:            crypto_utils.HashString(entry.ID),
 		ID:              entry.ID,
 		Doi:             entry.Doi,
 		Title:           entry.Title,
 		Comment:         entry.Comment,
 		Summary:         entry.Summary.Body,
-		Content:         entry.Content.Body,
+		Text:            entry.Content.Body,
 		Link:            newLinkArray(entry.Link),
 		Published:       convertTimeStrToString(entry.Published),
 		Updated:         convertTimeStrToString(entry.Updated),
