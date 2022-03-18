@@ -1,9 +1,9 @@
 package kb_types
 
-func newText(s string) *Text {
-	return &Text{Body: s}
+type Text struct {
+	TextBody string `json:"body"`
 }
 
-type Text struct {
-	Body string `json:"body"`
+func (t Text) String() string {
+	return t.TextBody
 }
