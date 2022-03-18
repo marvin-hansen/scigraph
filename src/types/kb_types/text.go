@@ -1,7 +1,7 @@
 package kb_types
 
 type Text struct {
-	TextBody string `json:"body"`
+	TextBody string `json:"textBody"`
 }
 
 func (t Text) String() string {

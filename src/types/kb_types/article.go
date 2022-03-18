@@ -7,12 +7,12 @@ type Publication struct {
 	ID              string      `json:"id"`
 	Doi             string      `json:"doi"`
 	Title           string      `json:"title"`
-	Published       TimeStr     `json:"published"`
-	Updated         TimeStr     `json:"updated"`
+	Published       string      `json:"published"`
+	Updated         string      `json:"updated"`
 	Comment         string      `json:"comment"`
 	Author          []*Author   `json:"author"`
 	Link            []*Link     `json:"link"`
-	PrimaryCategory *Category   `json:"primary_category,omitempty"`
+	PrimaryCategory *Category   `json:"primaryCategory,omitempty"`
 	Category        []*Category `json:"category,omitempty"`
 	Summary         *Text       `json:"summary"`
 	Content         *Text       `json:"content"`

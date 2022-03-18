@@ -1,7 +1,9 @@
 package kb_types
 
-import "time"
+import (
+	"github.com/marvin-hansen/arxiv/v1"
+)
 
-func newTimeStr(t time.Time) TimeStr {
-	return TimeStr(t.Format("2006-01-02T15:04:05-07:00"))
+func convertTimeStrToString(entry arxiv.TimeStr) string {
+	return TimeStr(entry).String()
 }
