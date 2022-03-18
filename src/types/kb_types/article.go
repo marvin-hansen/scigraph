@@ -10,12 +10,12 @@ type Publication struct {
 	Published       string      `json:"published"`
 	Updated         string      `json:"updated"`
 	Comment         string      `json:"comment"`
+	Summary         string      `json:"summary"`
+	Content         string      `json:"content"`
 	Author          []*Author   `json:"author"`
 	Link            []*Link     `json:"link"`
 	PrimaryCategory *Category   `json:"primaryCategory,omitempty"`
 	Category        []*Category `json:"category,omitempty"`
-	Summary         *Text       `json:"summary"`
-	Content         *Text       `json:"content"`
 }
 
 func (s Publication) String() string {
