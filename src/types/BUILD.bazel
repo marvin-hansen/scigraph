@@ -5,6 +5,7 @@ filegroup(
         "//src/types/config_types:build",
         "//src/types/graph_types:build",
         "//src/types/interface_types:build",
+        "//src/types/kb_types:build",
     ],
     visibility = ["//visibility:public"],
 )
