@@ -1,3 +1,0 @@
-
-
-curl -X POST -H "Content-Type:application/json,Accept:application/json" -d @rentalFleetSchema.json localhost:8185/v1/schema

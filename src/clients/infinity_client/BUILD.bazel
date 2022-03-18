@@ -1,7 +1,0 @@
-filegroup(
-    name = "build",
-    srcs = [
-        "//src/clients/infinity_client/rest",
-    ],
-    visibility = ["//visibility:public"],
-)
