@@ -5,7 +5,6 @@ go_library(
     srcs = ["main.go"],
     importpath = "scigraph/src/cmd/test",
     visibility = ["//visibility:private"],
-    deps = ["@com_github_vesoft_inc_nebula_go_v3//:nebula-go"],
 )
 
 go_binary(

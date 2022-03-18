@@ -10,10 +10,12 @@ go_library(
         "client_util.go",
         "errors.go",
         "req_interface.go",
+        "req_server.go",
     ],
     importpath = "scigraph/src/clients/infinity_client/rest",
     visibility = ["//visibility:public"],
     deps = [
+        "//src/clients/infinity_client/rest/server",
         "@com_github_json_iterator_go//:go",
         "@com_github_valyala_fasthttp//:fasthttp",
     ],
