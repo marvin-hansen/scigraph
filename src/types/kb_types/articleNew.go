@@ -5,15 +5,15 @@ import (
 	"scigraph/src/utils/crypto_utils"
 )
 
-func newPublicationArray(entries []*arxiv.Entry) (publicationArray []*Publication) {
+func NewPublicationArray(entries []*arxiv.Entry) (publicationArray []*Publication) {
 	for _, e := range entries {
-		p := newPublication(e)
+		p := NewPublication(e)
 		publicationArray = append(publicationArray, p)
 	}
 	return publicationArray
 }
 
-func newPublication(entry *arxiv.Entry) *Publication {
+func NewPublication(entry *arxiv.Entry) *Publication {
 	return &Publication{
 		GUID:            crypto_utils.HashString(entry.ID),
 		ID:              entry.ID,
@@ -21,11 +21,10 @@ func newPublication(entry *arxiv.Entry) *Publication {
 		Title:           entry.Title,
 		Comment:         entry.Comment,
 		Summary:         entry.Summary.Body,
-		Text:            entry.Content.Body,
-		Link:            newLinkArray(entry.Link),
+		Link:            NewLinkArray(entry.Link),
 		Published:       convertTimeStrToString(entry.Published),
 		Updated:         convertTimeStrToString(entry.Updated),
-		Author:          newAuthorArray(entry.Author),
+		Author:          NewAuthorArray(entry.Author),
 		PrimaryCategory: NewCategory(entry.PrimaryCategory.Term.String()),
 		Category:        NewCategoryArray(entry.Category),
 	}

@@ -7,5 +7,5 @@ type Concept struct {
 }
 
 func (s Concept) String() string {
-	return fmt.Sprintf("conceptName: %v", s.ConceptName)
+	return fmt.Sprintf("Concept: %v", s.ConceptName)
 }
