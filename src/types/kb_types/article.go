@@ -16,6 +16,7 @@ type Publication struct {
 	Link            []*Link     `json:"link"`
 	PrimaryCategory *Category   `json:"primaryCategory,omitempty"`
 	Category        []*Category `json:"category,omitempty"`
+	Concept         []*Concept  `json:"concept,omitempty"`
 }
 
 func (s Publication) String() string {
