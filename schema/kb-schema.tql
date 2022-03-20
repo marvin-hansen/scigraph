@@ -8,6 +8,7 @@ LinkTitle sub attribute, value string;
 Length sub attribute, value string;
 
 Link sub entity,
+    plays connectedLink:link,
     owns Rel,
     owns Href,
     owns Type,
@@ -19,20 +20,32 @@ Link sub entity,
 Term sub attribute, value string;
 
 Category sub entity,
+    plays connectedCategory:category,
     owns Term,
     ;
+
+ConceptName sub attribute, value string;
+
+Conceopt sub entity,
+    plays conceptualize:concept,
+    owns ConceptName,
+    ;
+
 
 Name sub attribute, value string;
 Uri sub attribute, value string;
 Email sub attribute, value string;
-Published sub attribute, value string, plays Author:published;
 
 Person sub entity,
     owns Name,
     owns Uri,
     owns Email,
-    owns Published,
     ;
+
+Published sub attribute, value string, plays authorship:author;
+
+Author sub Person,
+    plays authorship:author;
 
 Guid sub attribute, value long;
 Id sub attribute, value string;
@@ -44,15 +57,12 @@ Content sub entity,
     owns Title,
     ;
 
-Author sub relation,
-  relates published,
-  relates authored,
-  ;
+authorship sub relation, relates author, relates authored;
+conceptualize sub relation, relates concept, relates content;
 
-Connection sub relation,
-    relates source,
-    relates target,
-    ;
+connectedLink sub relation, relates link, relates content;
+connectedCategory sub relation, relates category, relates primary, relates secondary;
+
 
 Doi sub attribute, value string;
 Published sub attribute, value string;
@@ -60,15 +70,19 @@ Updated sub attribute, value string;
 Comment sub attribute, value string;
 Summary sub attribute, value string;
 Text sub attribute, value string;
-
-Authored sub attribute, value string, plays Author:authored;
+PrimaryCategory sub attribute, value string, plays connectedCategory:primary;
+SecondaryCategory sub attribute, value string, plays connectedCategory:secondary;
 
 Publication sub Content,
+    plays authorship:authored,
+    plays connectedLink:content,
+    plays conceptualize:content,
     owns Doi,
     owns Published,
     owns Updated,
     owns Comment,
     owns Summary,
     owns Text,
-    owns Authored,
+    owns PrimaryCategory,
+    owns SecondaryCategory,
     ;
