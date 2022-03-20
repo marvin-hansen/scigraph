@@ -10,8 +10,6 @@ import (
 // https://github.com/jdkato/prose
 const mtd = "processNLPHandler: "
 
-var keyTags = map[string]bool{"NN": true, "NNP": true, "NNPS": true, "NNS": true}
-
 func (a *App) processNLPHandler(entry *arxiv.Entry) {
 
 	title := entry.Title
@@ -35,12 +33,4 @@ func (a *App) processNLPHandler(entry *arxiv.Entry) {
 	for _, ent := range doc.Entities() {
 		fmt.Println("Entity: ", ent.Text)
 	}
-
-	//dbgPrint(mtd + "Iterate over the doc's tokens")
-	//for _, tok := range doc.Tokens() {
-	//	if keyTags[tok.Tag] { // check if it's a tag we want
-	//		fmt.Println(tok.Text, tok.Tag)
-	//	}
-	//}
-
 }
