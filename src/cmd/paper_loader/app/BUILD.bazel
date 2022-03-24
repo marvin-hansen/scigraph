@@ -7,8 +7,10 @@ go_library(
         "flags.go",
         "init.go",
         "process_nlp.go",
+        "process_nlp_graph.go",
         "process_print.go",
         "state.go",
+        "utils.go",
         "utils_query.go",
         "utils_search.go",
         "workflow.go",
@@ -16,6 +18,7 @@ go_library(
     importpath = "scigraph/src/cmd/paper_loader/app",
     visibility = ["//visibility:public"],
     deps = [
+        "//src/types/kb_types",
         "//src/utils/dbg_utils",
         "@com_github_jdkato_prose_v2//:prose",
         "@com_github_marvin_hansen_arxiv//v1:arxiv",

@@ -11,15 +11,23 @@ filegroup(
 go_library(
     name = "kb_types",
     srcs = [
-        "aNewArticle.go",
         "article.go",
+        "articleNew.go",
         "author.go",
+        "authorNew.go",
         "category.go",
+        "categoryNew.go",
+        "concept.go",
+        "conceptNew.go",
         "link.go",
-        "text.go",
+        "linkNew.go",
         "timestr.go",
+        "timestrNew.go",
     ],
     importpath = "scigraph/src/types/kb_types",
     visibility = ["//visibility:public"],
-    deps = ["@com_github_marvin_hansen_arxiv//v1:arxiv"],
+    deps = [
+        "//src/utils/crypto_utils",
+        "@com_github_marvin_hansen_arxiv//v1:arxiv",
+    ],
 )
