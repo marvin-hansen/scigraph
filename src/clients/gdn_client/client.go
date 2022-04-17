@@ -6,6 +6,7 @@ import (
 )
 
 type Client struct {
+	apiKey      string
 	Endpoint    string
 	HTTPC       *fasthttp.Client
 	HTTPTimeout time.Duration
@@ -13,6 +14,7 @@ type Client struct {
 
 func NewClient(config *ClientConfig) *Client {
 	return &Client{
+		apiKey:      apiKEY,
 		Endpoint:    getEndpoint(config),
 		HTTPTimeout: getTimeout(config),
 		HTTPC:       new(fasthttp.Client),

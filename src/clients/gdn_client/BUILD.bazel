@@ -10,7 +10,13 @@ filegroup(
 
 go_library(
     name = "gdn_client",
-    srcs = ["client.go"],
+    srcs = [
+        "client.go",
+        "client_config.go",
+        "client_const.go",
+        "client_util.go",
+    ],
     importpath = "scigraph/src/clients/gdn_client",
     visibility = ["//visibility:public"],
+    deps = ["@com_github_valyala_fasthttp//:fasthttp"],
 )

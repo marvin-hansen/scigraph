@@ -32,10 +32,5 @@ Session.vim
 crash.log
 output.log
 
-# Generate proto bindings
-# Docker needs them to build an image ... Really, better build with Bazel
-# /proto/cmdb/*.pb.go
-# /proto/cmx/*.pb.go
-# /proto/imx/*.pb.go
-# /proto/smdb/*.pb.go
-# /proto/*/*.pb.go
+# Custom files to ignore
+src/clients/gdn_client/key.go
