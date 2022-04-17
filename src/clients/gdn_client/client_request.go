@@ -44,7 +44,7 @@ func (c *Client) request(req Requester, results Responder) error {
 func (c *Client) requestQuery(req Requester, results Responder) error {
 	res, reqErr := c.do(req)
 	if reqErr != nil {
-		println("Request Error")
+		//println("Request Error")
 		return reqErr
 	}
 
@@ -55,7 +55,7 @@ func (c *Client) requestQuery(req Requester, results Responder) error {
 
 	decErr := decode(queryRes, results)
 	if decErr != nil {
-		println("Decode error")
+		//println("Decode error")
 		return decErr
 	}
 
@@ -78,7 +78,7 @@ func (c *Client) do(r Requester) (*fasthttp.Response, error) {
 		return nil, apiErr
 	}
 
-	fmt.Printf("%+v\n", string(res.Body()))
+	//fmt.Printf("%+v\n", string(res.Body()))
 
 	if res.StatusCode() != r.ResponseCode() {
 		var resp = new(Response)
