@@ -30,9 +30,11 @@ import (
 
 //**// Request //**//
 
-func NewRequestFor$name() *RequestFor$name {
+func NewRequestFor$name(fabric string) *RequestFor$name {
   // @FIXME: Add correct API path
-	return &RequestFor$name{path: "/_api/"}
+	return &RequestFor$name{
+			path: fmt.Sprintf("_fabric/%v/_api/NAME", fabric),
+	}
 }
 
 type RequestFor$name struct {
@@ -49,6 +51,14 @@ func (req *RequestFor$name) Method() string {
 
 func (req *RequestFor$name) Query() string {
 	return ""
+}
+
+func (req *RequestFor$name) HasQueryParameter() bool {
+	return false
+}
+
+func (req *RequestFor$name) GetQueryParameter() string {
+	return "" //"?excludeSystem=true"
 }
 
 func (req *RequestFor$name) Payload() []byte {
