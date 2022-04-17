@@ -31,16 +31,16 @@ import (
 //**// Request //**//
 
 func NewRequestFor$name() *RequestFor$name {
-	return &RequestFor$name{defaultVersion}
+  // @FIXME: Add correct API path
+	return &RequestFor$name{path: "/_api/"}
 }
 
 type RequestFor$name struct {
-	version string
+	path string
 }
 
 func (req *RequestFor$name) Path() string {
-  // @FIXME
-	return "/" + req.version + "/"
+	return req.path
 }
 
 func (req *RequestFor$name) Method() string {
@@ -82,3 +82,5 @@ EOF
 command bazel run //:gazelle
 ## Build all sources
 command bazel build //:build
+
+git add .
