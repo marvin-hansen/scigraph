@@ -55,9 +55,10 @@ func NewResponseForDeleteCollection() *ResponseForDeleteCollection {
 }
 
 type ResponseForDeleteCollection struct {
-	Error bool   `json:"error"`
-	Code  int    `json:"code"`
-	Id    string `json:"id"`
+	Error      bool   `json:"error"`
+	Code       int    `json:"code"`
+	Id         string `json:"id"`
+	RawMessage []byte `json:"raw"`
 }
 
 func (r ResponseForDeleteCollection) String() string {
@@ -69,9 +70,9 @@ func (r ResponseForDeleteCollection) String() string {
 }
 
 func (r *ResponseForDeleteCollection) GetRawMessage() []byte {
-	return []byte{}
+	return r.RawMessage
 }
 
 func (r *ResponseForDeleteCollection) SetRawMessage(raw []byte) {
-	// r.RawMessage = raw
+	r.RawMessage = raw
 }

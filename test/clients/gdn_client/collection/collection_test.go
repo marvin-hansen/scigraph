@@ -27,6 +27,28 @@ func TestCreateCollection(t *testing.T) {
 	assert.NoError(t, err)
 }
 
+func TestGetCollectionInfo(t *testing.T) {
+	c := gdn_client.NewClient(nil)
+	fabric := "SouthEastAsia"
+	collName := "TestCollection"
+
+	res, err := c.GetCollectionInfo(fabric, collName)
+	assert.NoError(t, err)
+	assert.NotNil(t, res)
+	println(res.String())
+}
+
+func TestTruncateCollection(t *testing.T) {
+	c := gdn_client.NewClient(nil)
+	fabric := "SouthEastAsia"
+	collName := "TestCollection"
+
+	res, err := c.TruncateCollection(fabric, collName)
+	assert.NoError(t, err)
+	assert.NotNil(t, res)
+	println(res.String())
+}
+
 func TestDeleteCollection(t *testing.T) {
 	c := gdn_client.NewClient(nil)
 	fabric := "SouthEastAsia"

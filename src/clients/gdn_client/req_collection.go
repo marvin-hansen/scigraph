@@ -23,12 +23,30 @@ func (c Client) CreateNewCollection(fabric, collectionName string, allowUserKeys
 	return nil
 }
 
+func (c Client) GetCollectionInfo(fabric, collectionName string) (response *requests.ResponseForGetCollectionInfo, err error) {
+	req := requests.NewRequestForGetCollectionInfo(fabric, collectionName)
+	response = requests.NewResponseForGetCollectionInfo()
+	if err = c.request(req, response); err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
+func (c Client) TruncateCollection(fabric, collectionName string) (response *requests.ResponseForTruncateCollection, err error) {
+	req := requests.NewRequestForTruncateCollection(fabric, collectionName)
+	response = requests.NewResponseForTruncateCollection()
+	if err = c.request(req, response); err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
 func (c Client) DeleteCollection(fabric, collectionName string, isSystem bool) (err error) {
 	req := requests.NewRequestForDeleteCollection(fabric, collectionName, isSystem)
 	response := requests.NewResponseForDeleteCollection()
 	if err = c.request(req, response); err != nil {
 		return err
 	}
-	// response: Code: 200, Error: false, ID: 159XXXXX
+	// valid response: Code: 200, Error: false, ID: 159XXXXX
 	return nil
 }
