@@ -13,10 +13,21 @@ type Client struct {
 }
 
 func NewClient(config *ClientConfig) *Client {
+
+	if config == nil {
+		config = NewClientDefaultConfig()
+	}
+
+	timeOut := time.Duration(config.Timeout) * time.Second
+
 	return &Client{
 		apiKey:      apiKEY,
-		Endpoint:    getEndpoint(config),
-		HTTPTimeout: getTimeout(config),
+		Endpoint:    config.GetConnectionString(),
+		HTTPTimeout: timeOut,
 		HTTPC:       new(fasthttp.Client),
 	}
+}
+
+func (c Client) getApiKey() string {
+	return c.apiKey
 }

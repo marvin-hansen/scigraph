@@ -28,11 +28,11 @@ func (c *Client) requestWithoutReturnValue(r Requester) error {
 func (c *Client) request(req Requester, results Responder) error {
 	res, reqErr := c.do(req)
 	if reqErr != nil {
+		//println("Request error")
 		return reqErr
 	}
 
 	results.SetRawMessage(res.Body())
-
 	decErr := decode(res.Body(), results)
 	if decErr != nil {
 		return decErr
@@ -73,37 +73,50 @@ func (c *Client) do(r Requester) (*fasthttp.Response, error) {
 	res := fasthttp.AcquireResponse()
 	err := c.HTTPC.DoTimeout(req, res, c.HTTPTimeout)
 	if err != nil {
-		return nil, err
+		//println("http req error")
+		apiErr := getApiError(res)
+		return nil, apiErr
 	}
 
-	// fmt.Printf("%+v\n", string(res.Body()))
-	// no usefull headers
+	fmt.Printf("%+v\n", string(res.Body()))
 
 	if res.StatusCode() != r.ResponseCode() {
 		var resp = new(Response)
 		if jsonErr := json.Unmarshal(res.Body(), resp); jsonErr != nil {
-			return nil, &APIError{
-				Status:  res.StatusCode(),
-				Message: jsonErr.Error(),
-			}
+			apiErr := getApiError(res)
+			return nil, apiErr
 		}
 
 		if !resp.Success {
-			return nil, &APIError{
-				Status:  res.StatusCode(),
-				Message: resp.Error,
-			}
+			//println("Response code not success")
+			apiErr := getApiError(res)
+			return nil, apiErr
 		}
 	}
 
 	return res, nil
 }
 
-func (c *Client) newRequest(r Requester) *fasthttp.Request {
-	// avoid Pointer's butting
-	u, _ := url.ParseRequestURI(c.Endpoint)
-	u.Path = u.Path + r.Path()
+func getApiError(res *fasthttp.Response) *APIError {
+	apiErr := &APIError{}
+	_ = decode(res.Body(), apiErr)
+	return apiErr
+}
 
+func getUri(endpoint string, r Requester) *url.URL {
+	var u = new(url.URL)
+	if r.HasQueryParameter() {
+		u, _ = url.ParseRequestURI(endpoint + r.GetQueryParameter())
+	} else {
+		u, _ = url.ParseRequestURI(endpoint)
+	}
+	u.Path = r.Path()
+	return u
+}
+
+func (c *Client) newRequest(r Requester) *fasthttp.Request {
+
+	u := getUri(c.Endpoint, r)
 	req := fasthttp.AcquireRequest()
 	req.Header.SetMethod(r.Method())
 	req.SetRequestURI(u.String())
@@ -113,15 +126,14 @@ func (c *Client) newRequest(r Requester) *fasthttp.Request {
 	nonce := fmt.Sprintf("%d", int64(time.Now().UTC().UnixNano()/int64(time.Millisecond)))
 	payload := nonce + r.Method() + u.Path
 
-	u.RawQuery = r.Query()
 	if u.RawQuery != "" {
+		u.RawQuery = r.Query()
 		payload += "?" + u.RawQuery
 	}
 
-	payload += string(body)
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("authorization", c.apiKey)
+	req.Header.Set("Authorization", "apikey "+c.getApiKey())
 
 	return req
 }
