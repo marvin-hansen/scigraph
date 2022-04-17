@@ -13,7 +13,7 @@ import (
 func NewRequestForCreateNewCollection(fabric, collectionName string, allowUserKeys bool, collectionType gdn_types.CollectionType) *RequestForCreateNewCollection {
 	return &RequestForCreateNewCollection{
 		path:    fmt.Sprintf("_fabric/%v/_api/collection", fabric),
-		payload: getPayload(collectionName, allowUserKeys, collectionType),
+		payload: getCreatePayload(collectionName, allowUserKeys, collectionType),
 	}
 }
 
@@ -22,7 +22,7 @@ type RequestForCreateNewCollection struct {
 	payload []byte
 }
 
-func getPayload(collectionName string, allowUserKeys bool, collectionType gdn_types.CollectionType) []byte {
+func getCreatePayload(collectionName string, allowUserKeys bool, collectionType gdn_types.CollectionType) []byte {
 
 	opts := NewCollectionOption(collectionName, allowUserKeys, collectionType)
 	data, err := json.MarshalIndent(opts, "", "")

@@ -5,6 +5,11 @@ import (
 	"scigraph/src/clients/gdn_client/gdn_types"
 )
 
+type UpdateOptions struct {
+	HasStream   bool `json:"hasStream"`
+	WaitForSync bool `json:"waitForSync"`
+}
+
 func NewCollectionOption(name string, allowUserKeys bool, collectionType gdn_types.CollectionType) *CollectionOption {
 	return &CollectionOption{
 		Name:     name,

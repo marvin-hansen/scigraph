@@ -32,6 +32,17 @@ func (c Client) GetCollectionInfo(fabric, collectionName string) (response *requ
 	return response, nil
 }
 
+// UpdateCollectionProperties updates collection properties.
+// Note: except for waitForSync and hasStream, collection properties cannot be changed once a collection is created.
+func (c Client) UpdateCollectionProperties(fabric, collectionName string, properties *requests.UpdateOptions) (response *requests.ResponseForUpdateCollection, err error) {
+	req := requests.NewRequestForUpdateCollection(fabric, collectionName, properties)
+	response = requests.NewResponseForUpdateCollection()
+	if err = c.request(req, response); err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
 func (c Client) TruncateCollection(fabric, collectionName string) (response *requests.ResponseForTruncateCollection, err error) {
 	req := requests.NewRequestForTruncateCollection(fabric, collectionName)
 	response = requests.NewResponseForTruncateCollection()

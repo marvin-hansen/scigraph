@@ -9,6 +9,7 @@ go_library(
         "get_collection_info.go",
         "shared.go",
         "truncate_collection.go",
+        "update_collection.go",
     ],
     importpath = "scigraph/src/clients/gdn_client/requests",
     visibility = ["//visibility:public"],

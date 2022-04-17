@@ -22,7 +22,16 @@ func (e CollectionType) String() string {
 }
 
 func (e CollectionType) ToInt() int {
-	return int(e)
+	switch e {
+	case DocumentCollectionType:
+		return 2
+	case EdgeCollectionType:
+		return 3
+	case UnknownCollectionType:
+		return 0
+	default:
+		return 0
+	}
 }
 
 func (e CollectionType) FromString(str string) CollectionType {
