@@ -201,8 +201,8 @@ go_repository(
 go_repository(
     name = "com_github_andybalholm_brotli",
     importpath = "github.com/andybalholm/brotli",
-    sum = "h1:7UCwP93aiSfvWpapti8g88vVVGp2qqtGyePsSuDafo4=",
-    version = "v1.0.0",
+    sum = "h1:V7DdXeJtZscaqfNuAdSRuRFzuiKlHSC/Zh3zl9qY3JY=",
+    version = "v1.0.4",
 )
 
 go_repository(
@@ -397,8 +397,8 @@ go_repository(
 go_repository(
     name = "com_github_klauspost_compress",
     importpath = "github.com/klauspost/compress",
-    sum = "h1:7rix8v8GpI3ZBb0nSozFRgbtXKv+hOe+qfEpZqybrAg=",
-    version = "v1.10.7",
+    sum = "h1:xqfchp4whNFxn5A4XFyyYtitiWI8Hy5EW59jEwcyL6U=",
+    version = "v1.15.0",
 )
 
 go_repository(
@@ -530,15 +530,15 @@ go_repository(
 go_repository(
     name = "com_github_valyala_fasthttp",
     importpath = "github.com/valyala/fasthttp",
-    sum = "h1:fJjaQ7cXdaSF9vDBujlHLDGj7AgoMTMIXvICeePzYbU=",
-    version = "v1.21.0",
+    sum = "h1:wwkR8mZn2NbigFsaw2Zj5r+xkmzjbrA/lyTmiSlal/Y=",
+    version = "v1.35.0",
 )
 
 go_repository(
     name = "com_github_valyala_tcplisten",
     importpath = "github.com/valyala/tcplisten",
-    sum = "h1:0R4NLDRDZX6JcmhJgXi5E4b8Wg84ihbmUKp/GvSPEzc=",
-    version = "v0.0.0-20161114210144-ceec8f93295a",
+    sum = "h1:rBHj/Xf+E1tRGZyWIWwJDiRY0zc1Js+CV5DqwacVSA8=",
+    version = "v1.0.0",
 )
 
 go_repository(
