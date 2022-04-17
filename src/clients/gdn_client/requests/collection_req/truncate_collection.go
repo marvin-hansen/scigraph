@@ -1,4 +1,4 @@
-package requests
+package collection_req
 
 import (
 	"fmt"
@@ -7,51 +7,51 @@ import (
 
 //**// Request //**//
 
-func NewRequestForGetCollectionInfo(fabric, collectionName string) *RequestForGetCollectionInfo {
-	return &RequestForGetCollectionInfo{
-		path: fmt.Sprintf("_fabric/%v/_api/collection/%v", fabric, collectionName),
+func NewRequestForTruncateCollection(fabric, collectionName string) *RequestForTruncateCollection {
+	return &RequestForTruncateCollection{
+		path: fmt.Sprintf("_fabric/%v/_api/collection/%v/truncate", fabric, collectionName),
 	}
 }
 
-type RequestForGetCollectionInfo struct {
+type RequestForTruncateCollection struct {
 	path string
 }
 
-func (req *RequestForGetCollectionInfo) Path() string {
+func (req *RequestForTruncateCollection) Path() string {
 	return req.path
 }
 
-func (req *RequestForGetCollectionInfo) Method() string {
-	return http.MethodGet
+func (req *RequestForTruncateCollection) Method() string {
+	return http.MethodPut
 }
 
-func (req *RequestForGetCollectionInfo) Query() string {
+func (req *RequestForTruncateCollection) Query() string {
 	return ""
 }
 
-func (req *RequestForGetCollectionInfo) HasQueryParameter() bool {
+func (req *RequestForTruncateCollection) HasQueryParameter() bool {
 	return false
 }
 
-func (req *RequestForGetCollectionInfo) GetQueryParameter() string {
+func (req *RequestForTruncateCollection) GetQueryParameter() string {
 	return ""
 }
 
-func (req *RequestForGetCollectionInfo) Payload() []byte {
+func (req *RequestForTruncateCollection) Payload() []byte {
 	return nil
 }
 
-func (req *RequestForGetCollectionInfo) ResponseCode() int {
+func (req *RequestForTruncateCollection) ResponseCode() int {
 	return 200 // ok
 }
 
 //**// Response //**//
 
-func NewResponseForGetCollectionInfo() *ResponseForGetCollectionInfo {
-	return new(ResponseForGetCollectionInfo)
+func NewResponseForTruncateCollection() *ResponseForTruncateCollection {
+	return new(ResponseForTruncateCollection)
 }
 
-type ResponseForGetCollectionInfo struct {
+type ResponseForTruncateCollection struct {
 	Code             int    `json:"code"`
 	Error            bool   `json:"error"`
 	Id               string `json:"id"`
@@ -69,7 +69,7 @@ type ResponseForGetCollectionInfo struct {
 	RawMessage       []byte
 }
 
-func (r ResponseForGetCollectionInfo) String() string {
+func (r ResponseForTruncateCollection) String() string {
 	return fmt.Sprintf("ID: %v, Name: %v,  Status: %v, Type: %v, CollectionModel: %v, IsSpot: %v, IsLocal: %v, HasStream: %v, WaitForSync: %v, IsSystem: %v, GloballyUniqueId: %v, SearchEnabled: %v",
 		//Code: %v, Error: %v,
 		//r.Code,
@@ -89,10 +89,10 @@ func (r ResponseForGetCollectionInfo) String() string {
 	)
 }
 
-func (r *ResponseForGetCollectionInfo) GetRawMessage() []byte {
+func (r *ResponseForTruncateCollection) GetRawMessage() []byte {
 	return r.RawMessage
 }
 
-func (r *ResponseForGetCollectionInfo) SetRawMessage(raw []byte) {
+func (r *ResponseForTruncateCollection) SetRawMessage(raw []byte) {
 	r.RawMessage = raw
 }

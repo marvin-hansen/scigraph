@@ -4,7 +4,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"scigraph/src/clients/gdn_client"
 	"scigraph/src/clients/gdn_client/gdn_types"
-	"scigraph/src/clients/gdn_client/requests"
+	"scigraph/src/clients/gdn_client/requests/collection_req"
 	"testing"
 )
 
@@ -43,7 +43,7 @@ func TestUpdateCollection(t *testing.T) {
 	c := gdn_client.NewClient(nil)
 	fabric := "SouthEastAsia"
 	collName := "TestCollection"
-	properties := &requests.UpdateOptions{
+	properties := &collection_req.UpdateOptions{
 		// Note: except for waitForSync and hasStream, collection properties cannot be changed once a collection is created.
 		HasStream:   true,
 		WaitForSync: true,

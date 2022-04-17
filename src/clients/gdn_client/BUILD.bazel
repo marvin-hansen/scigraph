@@ -26,7 +26,7 @@ go_library(
     visibility = ["//visibility:public"],
     deps = [
         "//src/clients/gdn_client/gdn_types",
-        "//src/clients/gdn_client/requests",
+        "//src/clients/gdn_client/requests/collection_req",
         "@com_github_json_iterator_go//:go",
         "@com_github_valyala_fasthttp//:fasthttp",
     ],

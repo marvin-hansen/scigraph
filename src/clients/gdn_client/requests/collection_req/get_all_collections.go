@@ -1,4 +1,4 @@
-package requests
+package collection_req
 
 import (
 	"fmt"
