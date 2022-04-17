@@ -36,10 +36,9 @@ func (a *App) processNLPGraphHandler(entry *arxiv.Entry) {
 	p.Concept = conceptArray
 
 	//println(p.String())
-
+	//
+	// to print generated JSON, we typecast it to a string
 	data, _ := json.MarshalIndent(p, "", " ")
-
-	// to print the data, we can typecast it to a string
 	fmt.Println(string(data))
 
 }
