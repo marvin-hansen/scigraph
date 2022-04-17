@@ -1,30 +1,29 @@
 package gdn_client
 
 type ClientConfig struct {
-	Protocol         string
+	Fabric           string
 	Host             string
-	Port             string
 	Timeout          int
 	connectionString string
 }
 
 func NewClientDefaultConfig() *ClientConfig {
-	host := ""
-	port := ""
+	host := defaultEndpoint
+	fabric := defaultFabric
 	return &ClientConfig{
+		Fabric:           fabric,
 		Host:             host,
-		Port:             port,
 		Timeout:          5,
-		connectionString: HTTPS_PROT + host + ":" + port,
+		connectionString: host + fabric,
 	}
 }
 
-func NewClientConfig(host, port string, timeout int) *ClientConfig {
+func NewClientConfig(host, fabric string, timeout int) *ClientConfig {
 	return &ClientConfig{
 		Host:             host,
-		Port:             port,
+		Fabric:           fabric,
 		Timeout:          timeout,
-		connectionString: HTTPS_PROT + host + ":" + port,
+		connectionString: host + fabric,
 	}
 }
 
