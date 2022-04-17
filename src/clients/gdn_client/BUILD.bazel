@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+filegroup(
+    name = "build",
+    srcs = [
+        ":gdn_client",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "gdn_client",
+    srcs = ["client.go"],
+    importpath = "scigraph/src/clients/gdn_client",
+    visibility = ["//visibility:public"],
+)
