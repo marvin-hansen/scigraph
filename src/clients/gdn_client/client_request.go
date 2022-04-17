@@ -35,6 +35,7 @@ func (c *Client) request(req Requester, results Responder) error {
 	results.SetRawMessage(res.Body())
 	decErr := decode(res.Body(), results)
 	if decErr != nil {
+		//println("Decode error")
 		return decErr
 	}
 

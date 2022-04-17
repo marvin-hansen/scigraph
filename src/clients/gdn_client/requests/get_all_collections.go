@@ -55,7 +55,7 @@ func (r ResponseForGetAllCollections) String() string {
 }
 
 type ResponseForGetAllCollections struct {
-	Result     []ResultGetAllCollections `json:"result"`
+	Result     []ResulFromCollections `json:"result"`
 	RawMessage []byte
 }
 
@@ -65,36 +65,4 @@ func (r *ResponseForGetAllCollections) GetRawMessage() []byte {
 
 func (r *ResponseForGetAllCollections) SetRawMessage(raw []byte) {
 	r.RawMessage = raw
-}
-
-type ResultGetAllCollections struct {
-	Id               string `json:"id"`
-	Name             string `json:"name"`
-	Status           int    `json:"status"`
-	Type             int    `json:"type"`
-	CollectionModel  string `json:"collectionModel"`
-	IsSpot           bool   `json:"isSpot"`
-	IsLocal          bool   `json:"isLocal"`
-	HasStream        bool   `json:"hasStream"`
-	WaitForSync      bool   `json:"waitForSync"`
-	IsSystem         bool   `json:"isSystem"`
-	GloballyUniqueId string `json:"globallyUniqueId"`
-	SearchEnabled    bool   `json:"searchEnabled"`
-}
-
-func (r ResultGetAllCollections) String() string {
-	return fmt.Sprintf("ID: %v, Name: %v,  Status: %v, Type: %v, CollectionModel: %v, IsSpot: %v, IsLocal: %v, HasStream: %v, WaitForSync: %v, IsSystem: %v, GloballyUniqueId: %v, SearchEnabled: %v",
-		r.Id,
-		r.Name,
-		r.Status,
-		r.Type,
-		r.CollectionModel,
-		r.IsSpot,
-		r.IsLocal,
-		r.HasStream,
-		r.WaitForSync,
-		r.IsSystem,
-		r.GloballyUniqueId,
-		r.SearchEnabled,
-	)
 }

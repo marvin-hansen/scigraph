@@ -2,7 +2,13 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 
 go_library(
     name = "requests",
-    srcs = ["get_all_collections.go"],
+    srcs = [
+        "create_new_collection.go",
+        "delete_collection.go",
+        "get_all_collections.go",
+        "shared.go",
+    ],
     importpath = "scigraph/src/clients/gdn_client/requests",
     visibility = ["//visibility:public"],
+    deps = ["//src/clients/gdn_client/gdn_types"],
 )

@@ -5,6 +5,7 @@ go_test(
     srcs = ["collection_test.go"],
     deps = [
         "//src/clients/gdn_client",
+        "//src/clients/gdn_client/gdn_types",
         "@com_github_stretchr_testify//assert",
     ],
 )

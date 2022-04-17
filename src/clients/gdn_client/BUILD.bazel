@@ -25,6 +25,7 @@ go_library(
     importpath = "scigraph/src/clients/gdn_client",
     visibility = ["//visibility:public"],
     deps = [
+        "//src/clients/gdn_client/gdn_types",
         "//src/clients/gdn_client/requests",
         "@com_github_json_iterator_go//:go",
         "@com_github_valyala_fasthttp//:fasthttp",

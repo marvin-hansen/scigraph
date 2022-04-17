@@ -75,16 +75,24 @@ func NewResponseFor$name() *ResponseFor$name {
 	return new(ResponseFor$name)
 }
 
+type ResponseFor$name struct {
+  // @FIXME
+	Field string `json:"field"`
+  RawMessage []byte
+}
+
 func (r ResponseFor$name) String() string {
   // @FIXME
 	return fmt.Sprintf("Bootfile: %v", r.Field)
 }
 
-type ResponseFor$name struct {
-  // @FIXME
-	Field string `json:"field"`
+func (r *ResponseFor$name) GetRawMessage() []byte {
+	return r.RawMessage
 }
 
+func (r *ResponseFor$name) SetRawMessage(raw []byte) {
+	r.RawMessage = raw
+}
 
 EOF
 
