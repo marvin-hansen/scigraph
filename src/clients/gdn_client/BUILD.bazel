@@ -14,9 +14,17 @@ go_library(
         "client.go",
         "client_config.go",
         "client_const.go",
+        "client_error.go",
+        "client_request.go",
+        "client_response.go",
         "client_util.go",
+        "interface.go",
+        "key.go",
     ],
     importpath = "scigraph/src/clients/gdn_client",
     visibility = ["//visibility:public"],
-    deps = ["@com_github_valyala_fasthttp//:fasthttp"],
+    deps = [
+        "@com_github_json_iterator_go//:go",
+        "@com_github_valyala_fasthttp//:fasthttp",
+    ],
 )
