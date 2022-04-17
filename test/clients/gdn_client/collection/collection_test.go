@@ -8,6 +8,8 @@ import (
 	"testing"
 )
 
+const verbose = false
+
 func TestGetAllCollections(t *testing.T) {
 	c := gdn_client.NewClient(nil)
 	fabric := "SouthEastAsia"
@@ -15,7 +17,10 @@ func TestGetAllCollections(t *testing.T) {
 	res, err := c.GetAllCollections(fabric)
 	assert.NoError(t, err)
 	assert.NotNil(t, res)
-	println(res.String())
+
+	if verbose {
+		println(res.String())
+	}
 }
 
 func TestCreateCollection(t *testing.T) {
@@ -36,7 +41,10 @@ func TestGetCollectionInfo(t *testing.T) {
 	res, err := c.GetCollectionInfo(fabric, collName)
 	assert.NoError(t, err)
 	assert.NotNil(t, res)
-	println(res.String())
+
+	if verbose {
+		println(res.String())
+	}
 }
 
 func TestUpdateCollection(t *testing.T) {
@@ -52,8 +60,10 @@ func TestUpdateCollection(t *testing.T) {
 	res, err := c.UpdateCollectionProperties(fabric, collName, properties)
 	assert.NoError(t, err)
 	assert.NotNil(t, res)
-	println(res.String())
 
+	if verbose {
+		println(res.String())
+	}
 }
 
 func TestTruncateCollection(t *testing.T) {
@@ -64,7 +74,10 @@ func TestTruncateCollection(t *testing.T) {
 	res, err := c.TruncateCollection(fabric, collName)
 	assert.NoError(t, err)
 	assert.NotNil(t, res)
-	println(res.String())
+
+	if verbose {
+		println(res.String())
+	}
 }
 
 func TestDeleteCollection(t *testing.T) {
