@@ -1,6 +1,8 @@
 package app
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/jdkato/prose/v2"
 	"github.com/marvin-hansen/arxiv/v1"
 	"scigraph/src/types/kb_types"
@@ -33,6 +35,11 @@ func (a *App) processNLPGraphHandler(entry *arxiv.Entry) {
 
 	p.Concept = conceptArray
 
-	println(p.String())
+	//println(p.String())
+
+	data, _ := json.MarshalIndent(p, "", " ")
+
+	// to print the data, we can typecast it to a string
+	fmt.Println(string(data))
 
 }
