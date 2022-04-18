@@ -1,5 +1,13 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_library")
 
+filegroup(
+    name = "build",
+    srcs = [
+        ":gdn_types",
+    ],
+    visibility = ["//visibility:public"],
+)
+
 go_library(
     name = "gdn_types",
     srcs = ["collection_types.go"],

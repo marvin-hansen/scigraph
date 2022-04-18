@@ -4,6 +4,8 @@ filegroup(
     name = "build",
     srcs = [
         ":gdn_client",
+        "//src/clients/gdn_client/gdn_types:build",
+        "//src/clients/gdn_client/requests:build",
     ],
     visibility = ["//visibility:public"],
 )
