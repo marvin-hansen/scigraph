@@ -42,7 +42,7 @@ func (c *Client) request(req Requester, results Responder) error {
 		return reqErr
 	}
 
-	// println(string(res.Body()))
+	println(string(res.Body()))
 	decErr := decode(res.Body(), results)
 	if decErr != nil {
 		// println("Decode error")

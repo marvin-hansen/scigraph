@@ -33,29 +33,6 @@ func TestCreateNewDocument(t *testing.T) {
 
 }
 
-func TestUpdateDocument(t *testing.T) {
-	c := gdn_client.NewClient(nil)
-	fabric := "SouthEastAsia"
-	collName := "TestCollection"
-
-	key := "2"
-	jsonDocument := getTestUpdateData(key)
-
-	res, err := c.UpdateDocument(fabric, collName, jsonDocument, nil)
-	assert.NoError(t, err)
-	assert.NotNil(t, res)
-
-	if verbose {
-		if res != nil {
-			assert.NotNil(t, res)
-			for _, v := range *res {
-				println(v.String())
-			}
-		}
-	}
-
-}
-
 func TestGetDocument(t *testing.T) {
 	c := gdn_client.NewClient(nil)
 	fabric := "SouthEastAsia"

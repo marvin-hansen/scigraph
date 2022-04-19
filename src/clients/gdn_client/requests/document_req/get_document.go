@@ -7,6 +7,11 @@ import (
 
 //**// Request //**//
 
+// NewRequestForGetDocument
+// Returns the document identified by key. The returned document contains three special attributes:
+//_id containing the document handle.
+//_key containing key which uniquely identifies a document.
+//_rev containing the revision.
 func NewRequestForGetDocument(fabric, collectionName, key string) *RequestForGetDocument {
 	return &RequestForGetDocument{
 		path: fmt.Sprintf("_fabric/%v/_api/document/%v/%v",
