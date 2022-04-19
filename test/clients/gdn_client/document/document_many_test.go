@@ -12,7 +12,7 @@ func TestUpdateManyDocument(t *testing.T) {
 	collName := "TestCollection"
 
 	key := "2"
-	jsonDocument := getTestUpdateData(key)
+	jsonDocument := getTestUpdateManyData(key)
 
 	res, err := c.UpdateManyDocuments(fabric, collName, jsonDocument, nil)
 	assert.NoError(t, err)
@@ -26,7 +26,6 @@ func TestUpdateManyDocument(t *testing.T) {
 			}
 		}
 	}
-
 }
 
 func TestReplaceManyDocuments(t *testing.T) {

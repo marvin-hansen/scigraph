@@ -46,7 +46,12 @@ func getKeysToDelete(key1, key2 string) []byte {
 	return []byte(str)
 }
 
-func getTestUpdateData(key string) []byte {
+func getTestUpdateSingleData(key string) []byte {
+	s := fmt.Sprintf("{\"_key\": \"%v\", \"item1\": \"updatedData\"}\n", key)
+	return []byte(s)
+}
+
+func getTestUpdateManyData(key string) []byte {
 	s := fmt.Sprintf("[ {\n   \"_key\": \"%v\",\n   \"item1\": \"data42\"\n} ]", key)
 	return []byte(s)
 }

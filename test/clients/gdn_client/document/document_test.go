@@ -45,6 +45,27 @@ func TestGetDocument(t *testing.T) {
 	printJsonRes(res, verbose)
 }
 
+func TestUpdateDocument(t *testing.T) {
+	c := gdn_client.NewClient(nil)
+	fabric := "SouthEastAsia"
+	collName := "TestCollection"
+	key := "7"
+	jsonDocument := getTestUpdateSingleData(key)
+	var silent = true
+
+	res, err := c.UpdateDocument(fabric, collName, key, jsonDocument, silent, nil)
+	assert.NoError(t, err)
+	assert.NotNil(t, res)
+	//printRes(res, verbose) Nothing to print as we do silent update
+
+	silent = false
+	res, err = c.UpdateDocument(fabric, collName, key, jsonDocument, silent, nil)
+	assert.NoError(t, err)
+	assert.NotNil(t, res)
+	printRes(res, verbose)
+
+}
+
 func TestDeleteDocument(t *testing.T) {
 	c := gdn_client.NewClient(nil)
 	fabric := "SouthEastAsia"
