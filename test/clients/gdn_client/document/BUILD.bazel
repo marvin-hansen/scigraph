@@ -2,7 +2,10 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 
 go_test(
     name = "document_test",
-    srcs = ["document_test.go"],
+    srcs = [
+        "document_many_test.go",
+        "document_test.go",
+    ],
     embed = [":document"],
     deps = [
         "//src/clients/gdn_client",

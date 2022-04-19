@@ -21,6 +21,7 @@ go_library(
         "client_response.go",
         "collection.go",
         "document.go",
+        "document_many.go",
         "interface.go",
         "key.go",
         "util.go",

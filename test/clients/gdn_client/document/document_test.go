@@ -56,6 +56,18 @@ func TestUpdateDocument(t *testing.T) {
 
 }
 
+func TestGetDocument(t *testing.T) {
+	c := gdn_client.NewClient(nil)
+	fabric := "SouthEastAsia"
+	collName := "TestCollection"
+	key := "5"
+
+	res, err := c.GetDocument(fabric, collName, key)
+	assert.NoError(t, err)
+	assert.NotNil(t, res)
+	printRes(res, verbose)
+}
+
 func TestDeleteDocument(t *testing.T) {
 	c := gdn_client.NewClient(nil)
 	fabric := "SouthEastAsia"

@@ -9,7 +9,9 @@ func getTestInsertData() []byte {
 	return []byte(` 
 		[
 		  {
-			"item1": "data1"
+			"item1": "data1",
+			"item2": "data2"
+
 		  },
 		  {
 			"item2": "data2"
@@ -18,15 +20,19 @@ func getTestInsertData() []byte {
 	`)
 }
 
-func getTestReplaceData(key string) []byte {
+func getTestReplaceData(key1, key2 string) []byte {
 	str := fmt.Sprintf(` 
 		[
 		  {
 			"_key": "%v",
 			"item1": "dataReplaced"
+		  },
+{
+			"_key": "%v",
+			"item1": "dataReplaced"
 		  }
 	]
-	`, key)
+	`, key1, key2)
 	return []byte(str)
 }
 

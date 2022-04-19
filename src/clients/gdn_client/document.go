@@ -40,6 +40,28 @@ func (c Client) UpdateDocument(
 	return response, nil
 }
 
+func (c Client) GetDocument(
+	fabric string, collectionName string, key string) (response *r.ResponseForGetDocument, err error) {
+
+	req := r.NewRequestForGetDocument(fabric, collectionName, key)
+	response = r.NewResponseForGetDocument()
+	if err = c.request(req, response); err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
+func (c Client) GetCustomDocument(
+	fabric string, collectionName string, key string, resp Responder) (response Responder, err error) {
+
+	req := r.NewRequestForGetDocument(fabric, collectionName, key)
+	response = resp
+	if err = c.request(req, resp); err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
 func (c Client) DeleteDocument(
 	fabric string, collectionName string, key string,
 	parameters *r.DeleteDocumentParameters) (response *r.ResponseForDeleteDocument, err error) {

@@ -10,8 +10,10 @@ func TestReplaceManyDocuments(t *testing.T) {
 	c := gdn_client.NewClient(nil)
 	fabric := "SouthEastAsia"
 	collName := "TestCollection"
-	key := "2"
-	jsonDocument := getTestReplaceData(key)
+	k1 := "1"
+	k2 := "2"
+
+	jsonDocument := getTestReplaceData(k1, k2)
 
 	res, err := c.ReplaceManyDocuments(fabric, collName, jsonDocument, nil)
 	assert.NoError(t, err)
@@ -31,8 +33,8 @@ func TestDeleteManyDocuments(t *testing.T) {
 	fabric := "SouthEastAsia"
 	collName := "TestCollection"
 
-	k1 := "3"
-	k2 := "4"
+	k1 := "1"
+	k2 := "2"
 	keysToDelete := getKeysToDelete(k1, k2)
 
 	resDel, errDel := c.DeleteManyDocuments(fabric, collName, keysToDelete, nil)
