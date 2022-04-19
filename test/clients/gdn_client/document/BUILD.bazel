@@ -1,0 +1,10 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_test")
+
+go_test(
+    name = "document_test",
+    srcs = ["document_test.go"],
+    deps = [
+        "//src/clients/gdn_client",
+        "@com_github_stretchr_testify//assert",
+    ],
+)
