@@ -12,4 +12,5 @@ type Requester interface {
 
 type Responder interface {
 	IsResponse()
+	String() string
 }

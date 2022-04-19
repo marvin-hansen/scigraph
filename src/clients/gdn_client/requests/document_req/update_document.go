@@ -1,6 +1,7 @@
 package document_req
 
 import (
+	"bytes"
 	"fmt"
 	"net/http"
 )
@@ -35,7 +36,7 @@ func (req *RequestForUpdateDocument) Path() string {
 }
 
 func (req *RequestForUpdateDocument) Method() string {
-	return http.MethodGet
+	return http.MethodPatch
 }
 
 func (req *RequestForUpdateDocument) Query() string {
@@ -64,12 +65,15 @@ func NewResponseForUpdateDocument() *ResponseForUpdateDocument {
 	return new(ResponseForUpdateDocument)
 }
 
-type ResponseForUpdateDocument DocumentResult
+type ResponseForUpdateDocument []DocumentResult
+
+func (r *ResponseForUpdateDocument) IsResponse() {}
 
 func (r ResponseForUpdateDocument) String() string {
-	return fmt.Sprintf("ID: %v, Key: %v, Ref: %v",
-		r.Id,
-		r.Key,
-		r.Rev,
-	)
+	var s bytes.Buffer
+	for _, v := range r {
+		s.WriteString(v.String())
+		s.WriteString("/n")
+	}
+	return s.String()
 }

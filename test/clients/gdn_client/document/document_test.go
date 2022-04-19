@@ -9,25 +9,12 @@ import (
 
 const verbose = true
 
-func getTestData() []byte {
-	return []byte(` 
-		[
-		  {
-			"item1": "data1"
-		  },
-		  {
-			"item2": "data2"
-		  }
-		]
-	`)
-}
-
 func TestCreateNewDocument(t *testing.T) {
 	c := gdn_client.NewClient(nil)
 	fabric := "SouthEastAsia"
 	collName := "TestCollection"
 	silent := false
-	jsonDocument := getTestData()
+	jsonDocument := getTestInsertData()
 
 	res, err := c.CreateNewDocument(fabric, collName, silent, jsonDocument, nil)
 	assert.NoError(t, err)
@@ -42,6 +29,29 @@ func TestCreateNewDocument(t *testing.T) {
 	}
 }
 
+func TestUpdateDocument(t *testing.T) {
+	c := gdn_client.NewClient(nil)
+	fabric := "SouthEastAsia"
+	collName := "TestCollection"
+
+	key := "2"
+	jsonDocument := getTestUpdateData(key)
+
+	res, err := c.UpdateDocument(fabric, collName, jsonDocument, nil)
+	assert.NoError(t, err)
+	assert.NotNil(t, res)
+
+	if verbose {
+		if res != nil {
+			assert.NotNil(t, res)
+			for _, v := range *res {
+				println(v.String())
+			}
+		}
+	}
+
+}
+
 func TestDeleteDocument(t *testing.T) {
 	c := gdn_client.NewClient(nil)
 	fabric := "SouthEastAsia"
@@ -51,10 +61,6 @@ func TestDeleteDocument(t *testing.T) {
 	res, err := c.DeleteDocument(fabric, collName, key, nil)
 	assert.NoError(t, err)
 	assert.NotNil(t, res)
-
-	if verbose {
-		println(res.String())
-	}
 }
 
 func TestDeleteDocumentNONSilent(t *testing.T) {
@@ -69,8 +75,6 @@ func TestDeleteDocumentNONSilent(t *testing.T) {
 	assert.NoError(t, err)
 	assert.NotNil(t, res)
 
-	if verbose {
-		println(res.String())
-	}
+	printRes(res, verbose)
 
 }
