@@ -8,6 +8,11 @@ import (
 //**// Request //**//
 
 func NewRequestForDeleteDocument(fabric, collectionName, key string, parameters *DeleteDocumentParameters) *RequestForDeleteDocument {
+
+	if parameters == nil {
+		parameters = GetDefaultDeleteDocumentParameters()
+	}
+
 	return &RequestForDeleteDocument{
 		path: fmt.Sprintf("_fabric/%v/_api/document/%v/%v",
 			fabric, collectionName,
@@ -33,7 +38,7 @@ type DeleteDocumentParameters struct {
 }
 
 // GetDefaultDeleteDocumentParameters
-//  silent If set to true, an empty object will be returned as response. No meta-data will be returned for the removed document. This option can be used to save some network traffic.
+//  silent If set to true, an empty object will be returned as response. No meta-data will be returned for the removed document. This option can be used to save some network traffic. Default is true
 //	returnOld   If set to true, adds the old attribute which displays the previous version of the document. Only available if the overwrite option is set to true. False by default
 //	waitForSync If set to true, returns only after data has been synced to disk. // False by default
 func GetDefaultDeleteDocumentParameters() *DeleteDocumentParameters {
@@ -41,6 +46,18 @@ func GetDefaultDeleteDocumentParameters() *DeleteDocumentParameters {
 		returnOld:   false,
 		silent:      true,
 		waitForSync: false,
+	}
+}
+
+//GetCustomDeleteDocumentParameters
+//  silent If set to true, an empty object will be returned as response. No meta-data will be returned for the removed document. This option can be used to save some network traffic.
+//	returnOld   If set to true, adds the old attribute which displays the previous version of the document. Only available if the overwrite option is set to true. False by default
+//	waitForSync If set to true, returns only after data has been synced to disk. // False by default
+func GetCustomDeleteDocumentParameters(returnOld, silent, waitForSync bool) *DeleteDocumentParameters {
+	return &DeleteDocumentParameters{
+		returnOld:   returnOld,
+		silent:      silent,
+		waitForSync: waitForSync,
 	}
 }
 
@@ -57,11 +74,11 @@ func (req *RequestForDeleteDocument) Query() string {
 }
 
 func (req *RequestForDeleteDocument) HasQueryParameter() bool {
-	return false
+	return true
 }
 
 func (req *RequestForDeleteDocument) GetQueryParameter() string {
-	return "" //"?excludeSystem=true"
+	return req.parameters
 }
 
 func (req *RequestForDeleteDocument) Payload() []byte {
@@ -80,4 +97,12 @@ func NewResponseForDeleteDocument() *ResponseForDeleteDocument {
 
 type ResponseForDeleteDocument DocumentResult
 
-func (r *ResponseForDeleteDocument) IsResponder() {}
+func (r *ResponseForDeleteDocument) IsResponse() {}
+
+func (r ResponseForDeleteDocument) String() string {
+	return fmt.Sprintf("ID: %v, Key: %v, Ref: %v",
+		r.Id,
+		r.Key,
+		r.Rev,
+	)
+}

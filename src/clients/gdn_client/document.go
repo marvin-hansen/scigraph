@@ -15,11 +15,32 @@ func (c Client) CreateNewDocument(
 	jsonDocument []byte,
 	parameters *r.CreateDocumentParameters) (response *r.ResponseForCreateDocument, err error) {
 
+	if parameters == nil {
+		parameters = r.GetDefaultCreateDocumentParameters()
+	}
+
 	req := r.NewRequestForCreateDocument(fabric, collectionName, silent, jsonDocument, parameters)
 	response = r.NewResponseForCreateDocument()
 	if err = c.request(req, response); err != nil {
 		return nil, err
 	}
+	return response, nil
+}
 
+func (c Client) DeleteDocument(
+	fabric string,
+	collectionName string,
+	key string,
+	parameters *r.DeleteDocumentParameters) (response *r.ResponseForDeleteDocument, err error) {
+
+	if parameters == nil {
+		parameters = r.GetDefaultDeleteDocumentParameters()
+	}
+
+	req := r.NewRequestForDeleteDocument(fabric, collectionName, key, parameters)
+	response = r.NewResponseForDeleteDocument()
+	if err = c.request(req, response); err != nil {
+		return nil, err
+	}
 	return response, nil
 }

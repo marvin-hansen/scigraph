@@ -14,10 +14,6 @@ import (
 // jsonDocument the document to store in the collection
 func NewRequestForCreateDocument(fabric, collectionName string, silent bool, jsonDocument []byte, parameters *CreateDocumentParameters) *RequestForCreateDocument {
 
-	if parameters == nil {
-		parameters = GetDefaultCreateDocumentParameters()
-	}
-
 	return &RequestForCreateDocument{
 		path:    fmt.Sprintf("_fabric/%v/_api/document/%v", fabric, collectionName),
 		payload: jsonDocument,
