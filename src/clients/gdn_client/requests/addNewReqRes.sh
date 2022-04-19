@@ -4,7 +4,7 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-source "../../../../scripts/bash_shared/convert_functions.sh"
+source "../../../../../scripts/bash_shared/convert_functions.sh"
 
 [ $# -eq 0 ] && {
   echo "Usage: package (lowercase) Entity (CamelCase):"; exit 1;
@@ -78,21 +78,15 @@ func NewResponseFor$name() *ResponseFor$name {
 type ResponseFor$name struct {
   // @FIXME
 	Field string `json:"field"`
-  RawMessage []byte
 }
+
+func (r *ResponseFor$name) IsResponse() {}
 
 func (r ResponseFor$name) String() string {
   // @FIXME
 	return fmt.Sprintf("Bootfile: %v", r.Field)
 }
 
-func (r *ResponseFor$name) GetRawMessage() []byte {
-	return r.RawMessage
-}
-
-func (r *ResponseFor$name) SetRawMessage(raw []byte) {
-	r.RawMessage = raw
-}
 
 EOF
 
