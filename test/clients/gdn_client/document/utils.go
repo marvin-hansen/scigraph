@@ -20,14 +20,24 @@ func getTestInsertData() []byte {
 	`)
 }
 
-func getTestReplaceData(key1, key2 string) []byte {
+func getTestReplaceSingleData(key string) []byte {
+	str := fmt.Sprintf(`
+		  {
+			"_key": "%v",
+			"item1": "dataReplaced"
+		  }
+	`, key)
+	return []byte(str)
+}
+
+func getTestReplaceManyData(key1, key2 string) []byte {
 	str := fmt.Sprintf(` 
 		[
 		  {
 			"_key": "%v",
 			"item1": "dataReplaced"
 		  },
-{
+		 {
 			"_key": "%v",
 			"item1": "dataReplaced"
 		  }

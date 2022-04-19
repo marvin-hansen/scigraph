@@ -10,6 +10,7 @@ go_library(
         "delete_parameters.go",
         "get_document.go",
         "replace_document.go",
+        "replace_many_document.go",
         "replace_parameters.go",
         "shared.go",
         "update_document.go",

@@ -35,7 +35,7 @@ func TestReplaceManyDocuments(t *testing.T) {
 	k1 := "1"
 	k2 := "2"
 
-	jsonDocument := getTestReplaceData(k1, k2)
+	jsonDocument := getTestReplaceManyData(k1, k2)
 
 	res, err := c.ReplaceManyDocuments(fabric, collName, jsonDocument, nil)
 	assert.NoError(t, err)

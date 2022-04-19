@@ -54,6 +54,22 @@ func (c Client) UpdateDocument(
 	return response, nil
 }
 
+func (c Client) ReplaceDocument(
+	fabric string, collectionName, key string, jsonDocuments []byte,
+	parameters *r.ReplaceDocumentParameters) (response *r.ResponseForReplaceDocument, err error) {
+
+	if parameters == nil {
+		parameters = r.GetDefaultReplaceDocumentParameters()
+	}
+
+	req := r.NewRequestForReplaceDocument(fabric, collectionName, key, jsonDocuments, parameters)
+	response = r.NewResponseForReplaceDocument()
+	if err = c.request(req, response); err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
 func (c Client) DeleteDocument(
 	fabric string, collectionName string, key string,
 	parameters *r.DeleteDocumentParameters) (response *r.ResponseForDeleteDocument, err error) {

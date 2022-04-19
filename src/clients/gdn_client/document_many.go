@@ -20,14 +20,14 @@ func (c Client) UpdateManyDocuments(
 
 func (c Client) ReplaceManyDocuments(
 	fabric string, collectionName string, jsonDocuments []byte,
-	parameters *r.ReplaceDocumentParameters) (response *r.ResponseForReplaceDocument, err error) {
+	parameters *r.ReplaceDocumentParameters) (response *r.ResponseForReplaceManyDocument, err error) {
 
 	if parameters == nil {
 		parameters = r.GetDefaultReplaceDocumentParameters()
 	}
 
-	req := r.NewRequestForReplaceDocument(fabric, collectionName, jsonDocuments, parameters)
-	response = r.NewResponseForReplaceDocument()
+	req := r.NewRequestForReplaceManyDocument(fabric, collectionName, jsonDocuments, parameters)
+	response = r.NewResponseForReplaceManyDocument()
 	if err = c.request(req, response); err != nil {
 		return nil, err
 	}

@@ -66,6 +66,20 @@ func TestUpdateDocument(t *testing.T) {
 
 }
 
+func TestReplaceDocuments(t *testing.T) {
+	c := gdn_client.NewClient(nil)
+	fabric := "SouthEastAsia"
+	collName := "TestCollection"
+	key := "5"
+
+	jsonDocument := getTestReplaceSingleData(key)
+
+	res, err := c.ReplaceDocument(fabric, collName, key, jsonDocument, nil)
+	assert.NoError(t, err)
+	printRes(res, verbose)
+
+}
+
 func TestDeleteDocument(t *testing.T) {
 	c := gdn_client.NewClient(nil)
 	fabric := "SouthEastAsia"

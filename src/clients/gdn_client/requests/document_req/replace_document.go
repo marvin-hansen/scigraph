@@ -1,7 +1,6 @@
 package document_req
 
 import (
-	"bytes"
 	"fmt"
 	"net/http"
 )
@@ -9,17 +8,24 @@ import (
 //**// Request //**//
 
 // NewRequestForReplaceDocument
-// Replaces multiple documents in the specified collection with the ones in the body. The replaced documents are specified by the _key attributes in the body documents.
-// If ignoreRevs is false, a _rev attribute in each document body must match the revision of the corresponding document in the database. Otherwise, the call fails
-// In case of an error or violated precondition, an error object with the attribute error set to true and the attribute errorCode set to the error code.
+// Replaces the document with key with the one in the body, provided there is such a document and no precondition is violated.
+// If the document exists and can be updated, then a HTTP 201 or a HTTP 202 is returned (depending on waitForSync, see below), the Etag header field contains the new revision of the document and the Location header contains a URL under which the document can be queried.
 //
-//If the query parameter returnOld is true, for each generated document the previous revision of the document is returned under the old attribute in the result.
-//If the query parameter returnNew is true, for each generated document the new document is returned under the new attribute in the result.
-func NewRequestForReplaceDocument(fabric, collectionName string, jsonDocument []byte, parameters *ReplaceDocumentParameters) *RequestForReplaceDocument {
+//If silent is set to false, the body of the response contains a JSON object with the information about the handle and the revision.
+//
+//_id contains the known document-handle of each document.
+//_key contains the key that uniquely identifies a document.
+//_rev contains the new document revision.
+//If the query parameter returnOld is true, then the previous revision of the document is returned under the old attribute in the result.
+//
+//If the query parameter returnNew is true, then the new document is returned under the new attribute in the result.
+//
+//If the document does not exist, then an HTTP 404 is returned and the body of the response contains an error document.
+func NewRequestForReplaceDocument(fabric, collectionName, key string, jsonDocument []byte, parameters *ReplaceDocumentParameters) *RequestForReplaceDocument {
 	return &RequestForReplaceDocument{
 		payload: jsonDocument,
-		path: fmt.Sprintf("_fabric/%v/_api/document/%v",
-			fabric, collectionName,
+		path: fmt.Sprintf("_fabric/%v/_api/document/%v/%v",
+			fabric, collectionName, key,
 		),
 		parameters: fmt.Sprintf("?ignoreRevs=%v&returnOld=%v&returnNew=%v&waitForSync=%v",
 			parameters.ignoreRevs,
@@ -70,15 +76,15 @@ func NewResponseForReplaceDocument() *ResponseForReplaceDocument {
 	return new(ResponseForReplaceDocument)
 }
 
-type ResponseForReplaceDocument []DocumentResult
+type ResponseForReplaceDocument DocumentResult
 
 func (r *ResponseForReplaceDocument) IsResponse() {}
 
 func (r ResponseForReplaceDocument) String() string {
-	var s bytes.Buffer
-	for _, v := range r {
-		s.WriteString(v.String())
-		s.WriteString("/n")
-	}
-	return s.String()
+	return fmt.Sprintf("ID: %v, Key: %v, Ref: %v, OldRev: %v",
+		r.Id,
+		r.Key,
+		r.Rev,
+		r.OldRev,
+	)
 }
