@@ -4,7 +4,6 @@ import (
 	"fmt"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/valyala/fasthttp"
-	"io"
 	"net/url"
 	"time"
 )
@@ -32,10 +31,10 @@ func (c *Client) request(req Requester, results Responder) error {
 		return reqErr
 	}
 
-	results.SetRawMessage(res.Body())
+	// println(string(res.Body()))
 	decErr := decode(res.Body(), results)
 	if decErr != nil {
-		//println("Decode error")
+		// println("Decode error")
 		return decErr
 	}
 
@@ -52,7 +51,6 @@ func (c *Client) requestQuery(req Requester, results Responder) error {
 	// Query returns an array of various types, so we have to prefix
 	// an extra node "entries" to Marshal the result into a struct that contains the raw message
 	queryRes := []byte("{" + "\"entries\":" + string(res.Body()) + "}")
-	results.SetRawMessage(queryRes)
 
 	decErr := decode(queryRes, results)
 	if decErr != nil {
@@ -79,9 +77,8 @@ func (c *Client) do(r Requester) (*fasthttp.Response, error) {
 		return nil, apiErr
 	}
 
-	//fmt.Printf("%+v\n", string(res.Body()))
-
-	if res.StatusCode() != r.ResponseCode() {
+	if !checkStatusCode(res.StatusCode(), r.ResponseCode()) {
+		println("Not ok")
 		var resp = new(Response)
 		if jsonErr := json.Unmarshal(res.Body(), resp); jsonErr != nil {
 			apiErr := getApiError(res)
@@ -89,13 +86,29 @@ func (c *Client) do(r Requester) (*fasthttp.Response, error) {
 		}
 
 		if !resp.Success {
-			//println("Response code not success")
+			println("Response not success")
 			apiErr := getApiError(res)
 			return nil, apiErr
 		}
 	}
 
 	return res, nil
+}
+
+// checkStatusCode determines if an OK response came through.
+func checkStatusCode(responseStatusCode, expectedStatusCode int) bool {
+	switch responseStatusCode {
+	case 200:
+		return true
+	case 201:
+		return true
+	case 202:
+		return true
+	case expectedStatusCode:
+		return true
+	default:
+		return false
+	}
 }
 
 func getApiError(res *fasthttp.Response) *APIError {
@@ -140,18 +153,13 @@ func (c *Client) newRequest(r Requester) *fasthttp.Request {
 }
 
 func decode(inputJson []byte, outputObject interface{}) error {
-
-	var out io.Writer
-	enc := json.NewEncoder(out)
-	enc.SetIndent("", "    ")
-	if err := enc.Encode(inputJson); err != nil {
-		return err
+	if len(inputJson) > 2 { // check for empty "{}" JSON first
+		err := json.Unmarshal(inputJson, outputObject)
+		if err != nil {
+			return fmt.Errorf("JSON decode error")
+		} else {
+			return nil
+		}
 	}
-
-	err := json.Unmarshal(inputJson, outputObject)
-	if err != nil {
-		return fmt.Errorf("decode error")
-	} else {
-		return nil
-	}
+	return nil // return nil in case of empty json
 }
