@@ -79,8 +79,9 @@ type ResponseForUpdateCollection struct {
 	IsSystem         bool       `json:"isSystem"`
 	GloballyUniqueId string     `json:"globallyUniqueId"`
 	SearchEnabled    bool       `json:"searchEnabled"`
-	RawMessage       []byte
 }
+
+func (r *ResponseForUpdateCollection) IsResponse() {}
 
 func (r ResponseForUpdateCollection) String() string {
 	return fmt.Sprintf("ID: %v, Name: %v,  Status: %v, Type: %v, CollectionModel: %v, IsSpot: %v, IsLocal: %v, HasStream: %v, WaitForSync: %v, KeyOptions: %v, IsSystem: %v, GloballyUniqueId: %v, SearchEnabled: %v",
@@ -101,12 +102,4 @@ func (r ResponseForUpdateCollection) String() string {
 		r.GloballyUniqueId,
 		r.SearchEnabled,
 	)
-}
-
-func (r *ResponseForUpdateCollection) GetRawMessage() []byte {
-	return r.RawMessage
-}
-
-func (r *ResponseForUpdateCollection) SetRawMessage(raw []byte) {
-	r.RawMessage = raw
 }

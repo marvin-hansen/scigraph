@@ -55,11 +55,12 @@ func NewResponseForDeleteCollection() *ResponseForDeleteCollection {
 }
 
 type ResponseForDeleteCollection struct {
-	Error      bool   `json:"error"`
-	Code       int    `json:"code"`
-	Id         string `json:"id"`
-	RawMessage []byte `json:"raw"`
+	Error bool   `json:"error"`
+	Code  int    `json:"code"`
+	Id    string `json:"id"`
 }
+
+func (r *ResponseForDeleteCollection) IsResponse() {}
 
 func (r ResponseForDeleteCollection) String() string {
 	return fmt.Sprintf("Code: %v, Error: %v, ID: %v",
@@ -67,12 +68,4 @@ func (r ResponseForDeleteCollection) String() string {
 		r.Error,
 		r.Id,
 	)
-}
-
-func (r *ResponseForDeleteCollection) GetRawMessage() []byte {
-	return r.RawMessage
-}
-
-func (r *ResponseForDeleteCollection) SetRawMessage(raw []byte) {
-	r.RawMessage = raw
 }

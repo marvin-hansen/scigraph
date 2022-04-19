@@ -71,14 +71,7 @@ func (r ResponseForCreateNewCollection) String() string {
 }
 
 type ResponseForCreateNewCollection struct {
-	Result     []ResulFromCollections `json:"result"`
-	RawMessage []byte
+	Result []ResulFromCollections `json:"result"`
 }
 
-func (r *ResponseForCreateNewCollection) GetRawMessage() []byte {
-	return r.RawMessage
-}
-
-func (r *ResponseForCreateNewCollection) SetRawMessage(raw []byte) {
-	r.RawMessage = raw
-}
+func (r *ResponseForCreateNewCollection) IsResponse() {}

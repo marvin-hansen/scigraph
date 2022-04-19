@@ -92,15 +92,9 @@ func NewResponseForCreateDocument() *ResponseForCreateDocument {
 	return new(ResponseForCreateDocument)
 }
 
-type ResponseForCreateDocument []CreateResult
+type ResponseForCreateDocument []DocumentResult
 
-func (r ResponseForCreateDocument) HasResults() bool {
-	if len(r) > 0 {
-		return true
-	} else {
-		return false
-	}
-}
+func (r *ResponseForCreateDocument) IsResponse() {}
 
 func (r ResponseForCreateDocument) String() string {
 	var s bytes.Buffer
@@ -109,27 +103,4 @@ func (r ResponseForCreateDocument) String() string {
 		s.WriteString("/n")
 	}
 	return s.String()
-}
-
-func (r *ResponseForCreateDocument) GetRawMessage() []byte {
-	//return r.RawMessage
-	return []byte("")
-}
-
-func (r *ResponseForCreateDocument) SetRawMessage(raw []byte) {
-	//r.RawMessage = raw
-}
-
-type CreateResult struct {
-	Id  string `json:"_id,omitempty"`
-	Key string `json:"_key,omitempty"`
-	Rev string `json:"_rev,omitempty"`
-}
-
-func (r CreateResult) String() string {
-	return fmt.Sprintf("ID: %v, Key: %v, Ref: %v",
-		r.Id,
-		r.Key,
-		r.Rev,
-	)
 }

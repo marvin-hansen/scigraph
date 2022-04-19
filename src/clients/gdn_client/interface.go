@@ -11,6 +11,5 @@ type Requester interface {
 }
 
 type Responder interface {
-	GetRawMessage() []byte
-	SetRawMessage(raw []byte)
+	IsResponse()
 }

@@ -50,19 +50,12 @@ func NewResponseForGetAllCollections() *ResponseForGetAllCollections {
 	return new(ResponseForGetAllCollections)
 }
 
+type ResponseForGetAllCollections struct {
+	Result []ResulFromCollections `json:"result"`
+}
+
+func (r *ResponseForGetAllCollections) IsResponse() {}
+
 func (r ResponseForGetAllCollections) String() string {
 	return fmt.Sprintf("Result: %v", r.Result)
-}
-
-type ResponseForGetAllCollections struct {
-	Result     []ResulFromCollections `json:"result"`
-	RawMessage []byte
-}
-
-func (r *ResponseForGetAllCollections) GetRawMessage() []byte {
-	return r.RawMessage
-}
-
-func (r *ResponseForGetAllCollections) SetRawMessage(raw []byte) {
-	r.RawMessage = raw
 }

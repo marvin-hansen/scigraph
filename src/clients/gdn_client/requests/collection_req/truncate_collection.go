@@ -66,8 +66,9 @@ type ResponseForTruncateCollection struct {
 	IsSystem         bool   `json:"isSystem"`
 	GloballyUniqueId string `json:"globallyUniqueId"`
 	SearchEnabled    bool   `json:"searchEnabled"`
-	RawMessage       []byte
 }
+
+func (r *ResponseForTruncateCollection) IsResponse() {}
 
 func (r ResponseForTruncateCollection) String() string {
 	return fmt.Sprintf("ID: %v, Name: %v,  Status: %v, Type: %v, CollectionModel: %v, IsSpot: %v, IsLocal: %v, HasStream: %v, WaitForSync: %v, IsSystem: %v, GloballyUniqueId: %v, SearchEnabled: %v",
@@ -87,12 +88,4 @@ func (r ResponseForTruncateCollection) String() string {
 		r.GloballyUniqueId,
 		r.SearchEnabled,
 	)
-}
-
-func (r *ResponseForTruncateCollection) GetRawMessage() []byte {
-	return r.RawMessage
-}
-
-func (r *ResponseForTruncateCollection) SetRawMessage(raw []byte) {
-	r.RawMessage = raw
 }

@@ -5,6 +5,7 @@ go_library(
     srcs = [
         "create_document.go",
         "delete_document.go",
+        "shared.go",
     ],
     importpath = "scigraph/src/clients/gdn_client/requests/document_req",
     visibility = ["//visibility:public"],
