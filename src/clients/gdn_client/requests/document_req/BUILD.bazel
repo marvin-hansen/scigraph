@@ -8,6 +8,7 @@ go_library(
         "delete_document.go",
         "delete_many_documents.go",
         "delete_parameters.go",
+        "replace_document.go",
         "shared.go",
         "update_document.go",
         "update_parameters.go",

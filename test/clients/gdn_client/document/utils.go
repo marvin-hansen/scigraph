@@ -18,15 +18,25 @@ func getTestInsertData() []byte {
 	`)
 }
 
-func getKeysToDelete(key1, key2 string) []byte {
+func getTestReplaceData(key string) []byte {
+	str := fmt.Sprintf(` 
+		[
+		  {
+			"_key": "%v",
+			"item1": "dataReplaced"
+		  }
+	]
+	`, key)
+	return []byte(str)
+}
 
+func getKeysToDelete(key1, key2 string) []byte {
 	str := fmt.Sprintf(` 
 		[
 		"%v",
 		"%v"
 		]
 	`, key1, key2)
-
 	return []byte(str)
 }
 

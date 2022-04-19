@@ -80,17 +80,3 @@ func TestDeleteDocumentNONSilent(t *testing.T) {
 	assert.NotNil(t, res)
 	printRes(res, verbose)
 }
-
-func TestDeleteManyDocuments(t *testing.T) {
-	c := gdn_client.NewClient(nil)
-	fabric := "SouthEastAsia"
-	collName := "TestCollection"
-
-	k1 := "3"
-	k2 := "4"
-	keysToDelete := getKeysToDelete(k1, k2)
-
-	resDel, errDel := c.DeleteManyDocuments(fabric, collName, keysToDelete, nil)
-	assert.NoError(t, errDel)
-	assert.NotNil(t, resDel)
-}

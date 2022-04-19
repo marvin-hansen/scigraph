@@ -55,19 +55,3 @@ func (c Client) DeleteDocument(
 	}
 	return response, nil
 }
-
-func (c Client) DeleteManyDocuments(
-	fabric string, collectionName string, keysToDelete []byte,
-	parameters *r.DeleteDocumentParameters) (response *r.ResponseForDeleteManyDocuments, err error) {
-
-	if parameters == nil {
-		parameters = r.GetDefaultDeleteDocumentParameters()
-	}
-
-	req := r.NewRequestForDeleteManyDocuments(fabric, collectionName, keysToDelete, parameters)
-	response = r.NewResponseForDeleteManyDocuments()
-	if err = c.request(req, response); err != nil {
-		return nil, err
-	}
-	return response, nil
-}
