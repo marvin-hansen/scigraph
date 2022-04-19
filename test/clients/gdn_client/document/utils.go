@@ -56,3 +56,9 @@ func printRes(res gdn_client.Responder, verbose bool) {
 		println(res.String())
 	}
 }
+
+func printJsonRes(res gdn_client.JsonResponder, verbose bool) {
+	if verbose {
+		println(res.String())
+	}
+}

@@ -41,22 +41,11 @@ func (c Client) UpdateDocument(
 }
 
 func (c Client) GetDocument(
-	fabric string, collectionName string, key string) (response *r.ResponseForGetDocument, err error) {
+	fabric string, collectionName string, key string) (response *r.ResponseForGetJsonDocument, err error) {
 
 	req := r.NewRequestForGetDocument(fabric, collectionName, key)
-	response = r.NewResponseForGetDocument()
-	if err = c.request(req, response); err != nil {
-		return nil, err
-	}
-	return response, nil
-}
-
-func (c Client) GetCustomDocument(
-	fabric string, collectionName string, key string, resp Responder) (response Responder, err error) {
-
-	req := r.NewRequestForGetDocument(fabric, collectionName, key)
-	response = resp
-	if err = c.request(req, resp); err != nil {
+	response = r.NewResponseForGetJsonDocument()
+	if err = c.requestJsonResponse(req, response); err != nil {
 		return nil, err
 	}
 	return response, nil

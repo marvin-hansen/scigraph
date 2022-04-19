@@ -24,6 +24,17 @@ func (c *Client) requestWithoutReturnValue(r Requester) error {
 	return checkError(err)
 }
 
+func (c *Client) requestJsonResponse(req Requester, results JsonResponder) error {
+	res, reqErr := c.do(req)
+	if reqErr != nil {
+		//println("Request error")
+		return reqErr
+	}
+	// println(string(res.Body()))
+	results.SetJsonMessage(res.Body())
+	return nil
+}
+
 func (c *Client) request(req Requester, results Responder) error {
 	res, reqErr := c.do(req)
 	if reqErr != nil {

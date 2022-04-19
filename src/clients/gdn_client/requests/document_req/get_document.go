@@ -50,19 +50,24 @@ func (req *RequestForGetDocument) ResponseCode() int {
 
 //**// Response //**//
 
-func NewResponseForGetDocument() *ResponseForGetDocument {
-	return new(ResponseForGetDocument)
+func NewResponseForGetJsonDocument() *ResponseForGetJsonDocument {
+	return new(ResponseForGetJsonDocument)
 }
 
-type ResponseForGetDocument DocumentResult
+type ResponseForGetJsonDocument struct {
+	json []byte
+}
 
-func (r *ResponseForGetDocument) IsResponse() {}
+func (r *ResponseForGetJsonDocument) IsJsonResponse() {}
 
-func (r ResponseForGetDocument) String() string {
-	return fmt.Sprintf("ID: %v, Key: %v, Ref: %v, OldRev: %v",
-		r.Id,
-		r.Key,
-		r.Rev,
-		r.OldRev,
-	)
+func (r *ResponseForGetJsonDocument) SetJsonMessage(rawJson []byte) {
+	r.json = rawJson
+}
+
+func (r *ResponseForGetJsonDocument) GetJsonMessage() []byte {
+	return r.json
+}
+
+func (r *ResponseForGetJsonDocument) String() string {
+	return string(r.json)
 }

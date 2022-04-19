@@ -65,7 +65,7 @@ func TestGetDocument(t *testing.T) {
 	res, err := c.GetDocument(fabric, collName, key)
 	assert.NoError(t, err)
 	assert.NotNil(t, res)
-	printRes(res, verbose)
+	printJsonRes(res, verbose)
 }
 
 func TestDeleteDocument(t *testing.T) {

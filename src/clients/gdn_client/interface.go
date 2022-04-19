@@ -14,3 +14,10 @@ type Responder interface {
 	IsResponse()
 	String() string
 }
+
+type JsonResponder interface {
+	IsJsonResponse()
+	GetJsonMessage() []byte
+	SetJsonMessage(raw []byte)
+	String() string
+}
