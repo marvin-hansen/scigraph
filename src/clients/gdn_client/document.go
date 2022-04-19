@@ -9,10 +9,7 @@ import (
 // parameters - additional query parameters for non-standard cases.
 // jsonDocument the document to store in the collection
 func (c Client) CreateNewDocument(
-	fabric string,
-	collectionName string,
-	silent bool,
-	jsonDocument []byte,
+	fabric string, collectionName string, silent bool, jsonDocument []byte,
 	parameters *r.CreateDocumentParameters) (response *r.ResponseForCreateDocument, err error) {
 
 	if parameters == nil {
@@ -28,9 +25,7 @@ func (c Client) CreateNewDocument(
 }
 
 func (c Client) UpdateDocument(
-	fabric string,
-	collectionName string,
-	jsonDocument []byte,
+	fabric string, collectionName string, jsonDocument []byte,
 	parameters *r.UpdateDocumentParameters) (response *r.ResponseForUpdateDocument, err error) {
 
 	if parameters == nil {
@@ -42,14 +37,11 @@ func (c Client) UpdateDocument(
 	if err = c.request(req, response); err != nil {
 		return nil, err
 	}
-
 	return response, nil
 }
 
 func (c Client) DeleteDocument(
-	fabric string,
-	collectionName string,
-	key string,
+	fabric string, collectionName string, key string,
 	parameters *r.DeleteDocumentParameters) (response *r.ResponseForDeleteDocument, err error) {
 
 	if parameters == nil {
@@ -58,6 +50,22 @@ func (c Client) DeleteDocument(
 
 	req := r.NewRequestForDeleteDocument(fabric, collectionName, key, parameters)
 	response = r.NewResponseForDeleteDocument()
+	if err = c.request(req, response); err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
+func (c Client) DeleteManyDocuments(
+	fabric string, collectionName string, keysToDelete []byte,
+	parameters *r.DeleteDocumentParameters) (response *r.ResponseForDeleteManyDocuments, err error) {
+
+	if parameters == nil {
+		parameters = r.GetDefaultDeleteDocumentParameters()
+	}
+
+	req := r.NewRequestForDeleteManyDocuments(fabric, collectionName, keysToDelete, parameters)
+	response = r.NewResponseForDeleteManyDocuments()
 	if err = c.request(req, response); err != nil {
 		return nil, err
 	}

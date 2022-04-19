@@ -16,4 +16,5 @@ go_library(
     srcs = ["utils.go"],
     importpath = "scigraph/test/clients/gdn_client/document",
     visibility = ["//visibility:public"],
+    deps = ["//src/clients/gdn_client"],
 )

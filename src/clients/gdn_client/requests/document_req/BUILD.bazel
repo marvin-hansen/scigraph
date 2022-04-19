@@ -4,9 +4,13 @@ go_library(
     name = "document_req",
     srcs = [
         "create_document.go",
+        "create_parameters.go",
         "delete_document.go",
+        "delete_many_documents.go",
+        "delete_parameters.go",
         "shared.go",
         "update_document.go",
+        "update_parameters.go",
     ],
     importpath = "scigraph/src/clients/gdn_client/requests/document_req",
     visibility = ["//visibility:public"],

@@ -27,6 +27,10 @@ func TestCreateNewDocument(t *testing.T) {
 			}
 		}
 	}
+
+	res, err = c.CreateNewDocument(fabric, collName, silent, jsonDocument, nil)
+	assert.NoError(t, err)
+
 }
 
 func TestUpdateDocument(t *testing.T) {
@@ -69,12 +73,24 @@ func TestDeleteDocumentNONSilent(t *testing.T) {
 	fabric := "SouthEastAsia"
 	collName := "TestCollection"
 	key := "2"
-	para := document_req.GetCustomDeleteDocumentParameters(false, false, false)
+	para := document_req.GetCustomDeleteDocumentParameters(false, false, false, false)
 
 	res, err := c.DeleteDocument(fabric, collName, key, para)
 	assert.NoError(t, err)
 	assert.NotNil(t, res)
-
 	printRes(res, verbose)
+}
 
+func TestDeleteManyDocuments(t *testing.T) {
+	c := gdn_client.NewClient(nil)
+	fabric := "SouthEastAsia"
+	collName := "TestCollection"
+
+	k1 := "3"
+	k2 := "4"
+	keysToDelete := getKeysToDelete(k1, k2)
+
+	resDel, errDel := c.DeleteManyDocuments(fabric, collName, keysToDelete, nil)
+	assert.NoError(t, errDel)
+	assert.NotNil(t, resDel)
 }

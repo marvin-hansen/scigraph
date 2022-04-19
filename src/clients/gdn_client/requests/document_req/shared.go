@@ -10,9 +10,10 @@ type DocumentResult struct {
 }
 
 func (r DocumentResult) String() string {
-	return fmt.Sprintf("ID: %v, Key: %v, Ref: %v",
+	return fmt.Sprintf("ID: %v, Key: %v, Ref: %v, OldRev: %v",
 		r.Id,
 		r.Key,
 		r.Rev,
+		r.OldRev,
 	)
 }
