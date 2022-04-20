@@ -64,6 +64,13 @@ http_archive(
 
 load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
 
+go_repository(
+    name = "com_github_marvin_hansen_goc8",
+    importpath = "github.com/marvin-hansen/goC8",
+    sum = "h1:33jh8h8ernikYhmL4doSigPPn47Ctm5EtbO45bzlcp4=",
+    version = "v0.0.1",
+)
+
 rules_proto_dependencies()
 
 rules_proto_toolchains()
@@ -390,8 +397,8 @@ go_repository(
 go_repository(
     name = "com_github_json_iterator_go",
     importpath = "github.com/json-iterator/go",
-    sum = "h1:Kz6Cvnvv2wGdaG/V8yMvfkmNiXq9Ya2KUv4rouJJr68=",
-    version = "v1.1.10",
+    sum = "h1:PV8peI4a0ysnczrg+LtxykD8LfKY9ML6u2jnxaEnrnM=",
+    version = "v1.1.12",
 )
 
 go_repository(
@@ -446,8 +453,8 @@ go_repository(
 go_repository(
     name = "com_github_modern_go_reflect2",
     importpath = "github.com/modern-go/reflect2",
-    sum = "h1:Esafd1046DLDQ0W1YjYsBW+p8U2u7vzgW2SQVmlNazg=",
-    version = "v0.0.0-20180701023420-4b7aa43c6742",
+    sum = "h1:xBagoLtFs94CBntxluKeaWgTMpvLxC4ur3nMaC9Gz0M=",
+    version = "v1.0.2",
 )
 
 go_repository(

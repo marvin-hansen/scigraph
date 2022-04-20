@@ -31,8 +31,5 @@ go_library(
     ],
     importpath = "scigraph/src/types/config_types",
     visibility = ["//visibility:public"],
-    deps = [
-        "//src/clients/pgdb_client",
-        "//src/utils/crypto_utils",
-    ],
+    deps = ["//src/utils/crypto_utils"],
 )

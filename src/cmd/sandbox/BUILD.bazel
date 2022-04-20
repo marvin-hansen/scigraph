@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "sandbox_lib",
+    srcs = ["main.go"],
+    importpath = "scigraph/src/cmd/sandbox",
+    visibility = ["//visibility:private"],
+    deps = ["@com_github_marvin_hansen_goc8//:goC8"],
+)
+
+go_binary(
+    name = "sandbox",
+    embed = [":sandbox_lib"],
+    visibility = ["//visibility:public"],
+)

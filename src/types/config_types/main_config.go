@@ -2,10 +2,8 @@
 
 package config_types
 
-import "scigraph/src/clients/pgdb_client"
-
 type MainConfig struct {
-	DBConf      *pgdb_client.DBConfig
+	//DBConf      *pgdb_client.DBConfig
 	ServiceID   string
 	ExchangeID  string // for IMX services that integrate an exchange
 	ServiceName string
