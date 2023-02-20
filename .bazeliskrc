@@ -1,4 +1,4 @@
-USE_BAZEL_VERSION=4.2.2
+USE_BAZEL_VERSION=6.0.0
 # Project Views (*.bazelproject files)
 # https://ij.bazel.build/docs/project-views.html#derive_targets_from_directories
 

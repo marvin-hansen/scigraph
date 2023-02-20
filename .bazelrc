@@ -9,6 +9,6 @@
 # suppresses some weirdo error messages in modules.
 # --incompatible_restrict_string_escapes
 
-build --symlink_prefix=dist/ --incompatible_restrict_string_escapes=false
+build --symlink_prefix=dist/
 
 test --test_output=errors

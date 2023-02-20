@@ -1,6 +1,6 @@
 module scigraph
 
-go 1.18
+go 1.19
 
 require (
 	github.com/go-numb/go-ftx v0.0.0-20220131041513-76761a493666
